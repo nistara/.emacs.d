@@ -13,7 +13,7 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(package-selected-packages
    (quote
-    (visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -707,3 +707,50 @@
 ;; neotree
 ;; vimish
 ;; git gutter
+
+
+;; ;; ref: https://stackoverflow.com/a/7053298/5443003
+;; (defun sh-send-line-or-region (&optional step)
+;;   (interactive ())
+;;   (let ((proc (get-process "shell"))
+;;         pbuf min max command)
+;;     (unless proc
+;;       (let ((currbuff (current-buffer)))
+;;         (shell)
+;;         (switch-to-buffer currbuff)
+;;         (setq proc (get-process "shell"))
+;;         ))
+;;     (setq pbuff (process-buffer proc))
+;;     (if (use-region-p)
+;;         (setq min (region-beginning)
+;;               max (region-end))
+;;       (setq min (point-at-bol)
+;;             max (point-at-eol)))
+;;     (setq command (concat (buffer-substring min max) "\n"))
+;;     (with-current-buffer pbuff
+;;       (goto-char (process-mark proc))
+;;       (insert command)
+;;       (move-marker (process-mark proc) (point))
+;;       ) ;;pop-to-buffer does not work with save-current-buffer -- bug?
+;;     (process-send-string  proc command)
+;;     (display-buffer (process-buffer proc) t)
+;;     (when step 
+;;       (goto-char max)
+;;       (next-line))
+;;     ))
+;; 
+;; (defun sh-send-line-or-region-and-step ()
+;;   (interactive)
+;;   (sh-send-line-or-region t))
+;; (defun sh-switch-to-process-buffer ()
+;;   (interactive)
+;;   (pop-to-buffer (process-buffer (get-process "shell")) t))
+
+;; (define-key sh-mode-map [(control ?j)] 'sh-send-line-or-region-and-step)
+;; (define-key sh-mode-map [(control ?c) (control ?z)] 'sh-switch-to-process-buffer)
+
+
+;; Code folding
+;; ref: https://github.com/mrkkrp/vimish-fold
+(require 'vimish-fold)
+(vimish-fold-global-mode 1)
