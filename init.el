@@ -709,53 +709,47 @@
 ;; git gutter
 
 
-;; ;; ref: https://stackoverflow.com/a/7053298/5443003
-;; (defun sh-send-line-or-region (&optional step)
-;;   (interactive ())
-;;   (let ((proc (get-process "shell"))
-;;         pbuf min max command)
-;;     (unless proc
-;;       (let ((currbuff (current-buffer)))
-;;         (shell)
-;;         (switch-to-buffer currbuff)
-;;         (setq proc (get-process "shell"))
-;;         ))
-;;     (setq pbuff (process-buffer proc))
-;;     (if (use-region-p)
-;;         (setq min (region-beginning)
-;;               max (region-end))
-;;       (setq min (point-at-bol)
-;;             max (point-at-eol)))
-;;     (setq command (concat (buffer-substring min max) "\n"))
-;;     (with-current-buffer pbuff
-;;       (goto-char (process-mark proc))
-;;       (insert command)
-;;       (move-marker (process-mark proc) (point))
-;;       ) ;;pop-to-buffer does not work with save-current-buffer -- bug?
-;;     (process-send-string  proc command)
-;;     (display-buffer (process-buffer proc) t)
-;;     (when step 
-;;       (goto-char max)
-;;       (next-line))
-;;     ))
-;; 
-;; (defun sh-send-line-or-region-and-step ()
-;;   (interactive)
-;;   (sh-send-line-or-region t))
-;; (defun sh-switch-to-process-buffer ()
-;;   (interactive)
-;;   (pop-to-buffer (process-buffer (get-process "shell")) t))
-
-;; (define-key sh-mode-map [(control ?j)] 'sh-send-line-or-region-and-step)
-;; (define-key sh-mode-map [(control ?c) (control ?z)] 'sh-switch-to-process-buffer)
-
-
 ;; Code folding
 ;; ref: https://github.com/mrkkrp/vimish-fold
 (require 'vimish-fold)
 (vimish-fold-global-mode 1)
 
 
+;; ;; sending line to shell
+;; ;; ref: https://www.emacswiki.org/emacs/essh.el
+;; (require 'essh)                                                    ;;
+;; (defun essh-sh-hook ()                                             ;;
+;;   (define-key sh-mode-map "\C-c\C-r" 'pipe-region-to-shell)        ;;
+;;   (define-key sh-mode-map "\C-c\C-b" 'pipe-buffer-to-shell)        ;;
+;;   (define-key sh-mode-map "\C-c\C-j" 'pipe-line-to-shell)          ;;
+;;   (define-key sh-mode-map "\C-c\C-n" 'pipe-line-to-shell-and-step) ;;
+;;   (define-key sh-mode-map "\C-c\C-f" 'pipe-function-to-shell)      ;;
+;;   (define-key sh-mode-map "\C-c\C-d" 'shell-cd-current-directory)) ;;
+;; (add-hook 'sh-mode-hook 'essh-sh-hook)                             ;;
 
 
 
+;; ;; SQL
+;; (add-hook 'sql-mode-hook
+;;           (lambda ()
+;;             ;; (load-library "sql-library")
+;;             (local-set-key (kbd "<s-return>") 'sql-send-line-and-next)))
+
+
+
+;; From Dr. Mathieu Basille
+;; ref: 
+(electric-pair-mode 1)
+(setq electric-pair-pairs '(
+                            (?\" . ?\")
+                            (?\` . ?\`)
+                            (?\( . ?\))
+                            (?\[ . ?\])
+                            (?\{ . ?\})
+                            ) )
+
+
+;; (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
+
+
+(setq initial-scratch-message nil)
