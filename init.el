@@ -13,7 +13,7 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(package-selected-packages
    (quote
-    (vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -160,7 +160,8 @@
 
 ;; Create shortcut for 'M-x buffer-menu'
 ;; =============================================================================
-(global-set-key (kbd "s-b") 'buffer-menu)
+;; (global-set-key (kbd "s-b") 'buffer-menu)
+(global-set-key (kbd "s-b") 'ibuffer)
 
 
 ;; Allows use of erase-buffer (first time use sets this command):
@@ -506,8 +507,9 @@
 ;; Shortcut to open bats folder
 (global-set-key (kbd "C-c bats") (lambda() (interactive)(find-file "~/projects/bats")))
 
-;; Shortcut to open network folder
+;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
+(global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/flu-net")))
 
 ;; Shortcut to open Projects folder in Dropbox
 (global-set-key (kbd "C-c dpo") (lambda() (interactive)(find-file "~/Dropbox/UC Davis/Projects")))
@@ -742,7 +744,7 @@
 (electric-pair-mode 1)
 (setq electric-pair-pairs '(
                             (?\" . ?\")
-                            (?\` . ?\`)
+                            ;; (?\` . ?\`)
                             (?\( . ?\))
                             (?\[ . ?\])
                             (?\{ . ?\})
@@ -753,3 +755,9 @@
 
 
 (setq initial-scratch-message nil)
+
+
+;; Git gutter
+;; =============================================================================
+;; ref: https://github.com/syohex/emacs-git-gutter
+(global-git-gutter-mode +1)
