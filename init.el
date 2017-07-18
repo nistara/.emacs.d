@@ -14,12 +14,14 @@
  '(package-selected-packages
    (quote
     (git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(cursor ((t (:background "forest green")))))
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (load "ess-site")
 
@@ -764,3 +766,14 @@
 ;; Installed fringe-helper, git-gutter-fringe and git-gutter-mode through MELPA
 (require 'git-gutter-fringe)
 (global-git-gutter-mode +1)
+
+
+;; Color of the fringe
+(set-face-background 'fringe "#181a26")
+
+
+
+;; ;; Speedbar
+;; ;; =============================================================================
+;; (require 'sr-speedbar)
+
