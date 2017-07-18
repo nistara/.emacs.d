@@ -13,7 +13,7 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(package-selected-packages
    (quote
-    (git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -760,4 +760,7 @@
 ;; Git gutter
 ;; =============================================================================
 ;; ref: https://github.com/syohex/emacs-git-gutter
+;; ref: https://github.com/syohex/emacs-git-gutter-fringe
+;; Installed fringe-helper, git-gutter-fringe and git-gutter-mode through MELPA
+(require 'git-gutter-fringe)
 (global-git-gutter-mode +1)
