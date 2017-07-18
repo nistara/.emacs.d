@@ -741,16 +741,16 @@
 
 
 
-;; From Dr. Mathieu Basille
-;; ref: 
-(electric-pair-mode 1)
-(setq electric-pair-pairs '(
-                            (?\" . ?\")
-                            ;; (?\` . ?\`)
-                            (?\( . ?\))
-                            (?\[ . ?\])
-                            (?\{ . ?\})
-                            ) )
+;; ;; From Dr. Mathieu Basille
+;; ;; ref: 
+;; (electric-pair-mode 1)
+;; (setq electric-pair-pairs '(
+;;                             (?\" . ?\")
+;;                             (?\` . ?\`)
+;;                             (?\( . ?\))
+;;                             (?\[ . ?\])
+;;                             (?\{ . ?\})
+;;                             ) )
 
 
 ;; (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
@@ -776,4 +776,3 @@
 ;; ;; Speedbar
 ;; ;; =============================================================================
 ;; (require 'sr-speedbar)
-
