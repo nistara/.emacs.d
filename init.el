@@ -13,7 +13,7 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(package-selected-packages
    (quote
-    (git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -240,18 +240,18 @@
 
 (global-set-key (kbd "s--") 'fill-to-end)
 
-;; Add hashes till end of line (based on above)
-(defun fill-hash-to-end ()
-  (interactive)
-  (save-excursion
-    (end-of-line)
-    (while (< (current-column) 80)
-      (insert-char ?#)))
-  (end-of-line)
-  ;; (newline)
-  )
-
-(global-set-key (kbd "s-3") 'fill-hash-to-end)
+;; ;; Add hashes till end of line (based on above)
+;; (defun fill-hash-to-end ()
+;;   (interactive)
+;;   (save-excursion
+;;     (end-of-line)
+;;     (while (< (current-column) 80)
+;;       (insert-char ?#)))
+;;   (end-of-line)
+;;   ;; (newline)
+;;   )
+;; 
+;; (global-set-key (kbd "s-3") 'fill-hash-to-end)
 
 ;; Add = till end of line (based on above)
 (defun fill-equal-to-end ()
@@ -649,8 +649,11 @@
 ;; Making it more intuitive to split windows
 ;; =============================================================================
 ;; Ref: ftp://ftp.gnu.org/old-gnu/Manuals/emacs-20.7/html_chapter/emacs_20.html
-(global-set-key (kbd "M-1") 'split-window-vertically)
-(global-set-key (kbd "M-2") 'split-window-horizontally)
+;; Ref: https://stackoverflow.com/a/6465415/5443003
+;; (global-set-key (kbd "M-1") 'split-window-vertically)
+;; (global-set-key (kbd "M-2") 'split-window-horizontally)
+(global-set-key (kbd "M-1") (lambda () (interactive)(split-window-vertically) (other-window 1)))
+(global-set-key (kbd "M-2") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
 (global-set-key (kbd "M-`") 'delete-other-windows)
 (global-set-key (kbd "M-0") 'delete-window)
 
@@ -776,3 +779,38 @@
 ;; ;; Speedbar
 ;; ;; =============================================================================
 ;; (require 'sr-speedbar)
+
+
+;; Highlight parenthesis
+;; =============================================================================
+; Highlight matching parentheses (from Gabor's emacs)
+(require 'highlight-parentheses)
+(setq hl-paren-colors '("blue" "gold" "IndianRed" "cyan" "green" "orange"
+			"magenta"))
+
+(defun hpm-on ()
+  (highlight-parentheses-mode t))
+(add-hook 'ess-mode-hook 'hpm-on)
+(add-hook 'inferior-ess-mode-hook 'hpm-on)
+
+
+;; Select/mark current line
+;; =============================================================================
+(defun xah-select-current-line ()
+  "Select current line.
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2016-07-22"
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)))
+
+(global-set-key (kbd "M-l") 'xah-select-current-line)
+
+;; =============================================================================
+
+
+;; Better shortcut for commenting
+;; -----------------------------------------------------------------------------
+(global-set-key (kbd "s-3") 'comment-dwim)
+
+
