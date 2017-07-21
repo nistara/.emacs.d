@@ -11,6 +11,7 @@
  '(doc-view-continuous t)
  '(initial-buffer-choice "~/projects")
  '(markdown-command "/usr/local/bin/pandoc")
+ '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
     (highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
@@ -195,10 +196,10 @@
 ;; Fix markdown-mode's hijacking of left-word and right-word
 ;; =============================================================================
 ;; https://www.reddit.com/r/emacs/comments/51zyda/markdown_mode_hijacked_leftword_and_rightword/d7g9ix1/
-(eval-after-load "markdown-mode"
-  '(progn
-    (define-key markdown-mode-map (kbd "M-<left>") nil)
-    (define-key markdown-mode-map (kbd "M-<right>") nil)))
+;; (eval-after-load "markdown-mode"
+;;   '(progn
+;;     (define-key markdown-mode-map (kbd "M-<left>") nil)
+;;     (define-key markdown-mode-map (kbd "M-<right>") nil)))
 
 
 ;; Replace highlighted text with what I type?:
@@ -654,8 +655,8 @@
 ;; (global-set-key (kbd "M-2") 'split-window-horizontally)
 (global-set-key (kbd "M-1") (lambda () (interactive)(split-window-vertically) (other-window 1)))
 (global-set-key (kbd "M-2") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
-(global-set-key (kbd "M-`") 'delete-other-windows)
-(global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-0") 'delete-other-windows)
+(global-set-key (kbd "M-`") 'delete-window)
 
 
 
@@ -814,3 +815,24 @@ Version 2016-07-22"
 (global-set-key (kbd "s-3") 'comment-dwim)
 
 
+;; Recenter with C-l starts with top, then middle, then bottom:
+;; -----------------------------------------------------------------------------
+(setq recenter-positions '(top middle bottom))
+
+
+;; org-mode
+;; -----------------------------------------------------------------------------
+;; ref: http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+;; ref: http://orgmode.org/manual/Closing-items.html
+(setq org-log-done 'time)
+
+
+;; Global shortcut for forward/backword word
+;; -----------------------------------------------------------------------------
+(global-set-key (kbd "<C-right>") 'forward-word)
+(global-set-key (kbd "<C-left>") 'left-word)
