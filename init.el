@@ -871,3 +871,10 @@ Version 2016-07-22"
 ;; Setting hyper keys
 ;; ref: http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+
+
+;; Code highlighting in org-mode
+(setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-confirm-babel-evaluate nil
+    org-edit-src-content-indentation 0)
