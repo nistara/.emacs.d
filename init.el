@@ -11,10 +11,11 @@
  '(doc-view-continuous t)
  '(initial-buffer-choice "~/projects")
  '(markdown-command "/usr/local/bin/pandoc")
+ '(org-hide-emphasis-markers t)
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -22,7 +23,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "forest green")))))
+ '(cursor ((t (:background "forest green"))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1)))))
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (load "ess-site")
 
@@ -836,3 +838,36 @@ Version 2016-07-22"
 ;; -----------------------------------------------------------------------------
 (global-set-key (kbd "<C-right>") 'forward-word)
 (global-set-key (kbd "<C-left>") 'left-word)
+
+
+;; Getting biblio to work; using MELPA (in addition to MELPA stable)
+;; -----------------------------------------------------------------------------
+;; ref: https://github.com/org-trello/org-trello/issues/195
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; (package-refresh-contents)
+;; Then installed biblio (needed version 0.2 which was on MELPA, not MELPA stable
+;; Then installed org-ref (from MELPA)
+;; The commented the above out, so emacs doesn't look for MELPA each time this
+;; buffer is evaluated.
+
+
+;; Customizing org mode:
+;; -----------------------------------------------------------------------------
+(setq reftex-default-bibliography '("~/Drive/bibliography/references.bib"))
+
+(setq org-ref-bibliography-notes "~/Drive/bibliography/notes.org"
+;; see org-ref for use of these variables
+      org-ref-default-bibliography '("~/Drive/bibliography/references.bib")
+      org-ref-pdf-directory "~/Drive/bibtex-pdfs/")
+(setq org-latex-prefer-user-labels t) 
+
+(add-to-list 'load-path "/Users/nistara/Documents/emacs-downloads/org-ref") 
+;; (require 'org-ref)
+
+;; for latex export to work with citations and bibliography
+;; ref: https://github.com/jkitchin/org-ref/issues/423
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+;; Setting hyper keys
+;; ref: http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
+(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
