@@ -882,3 +882,19 @@ Version 2016-07-22"
 
 ;; Fill column indicator to mark column
 (require 'fill-column-indicator)
+
+
+;; Modifying emacs prompts
+;; =============================================================================
+;; ref: https://www.masteringemacs.org/article/disabling-prompts-emacs
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+         kill-buffer-query-functions))
+
+;; stop emacs from asking confirmation to kill buffer
+;; ref: https://superuser.com/a/354900
+(global-set-key (kbd "C-x k") (lambda ()
+                              (interactive)
+                              (kill-buffer (current-buffer))))
+
+
