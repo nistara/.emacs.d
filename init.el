@@ -878,3 +878,7 @@ Version 2016-07-22"
     org-src-tab-acts-natively t
     org-confirm-babel-evaluate nil
     org-edit-src-content-indentation 0)
+
+
+;; Fill column indicator to mark column
+(require 'fill-column-indicator)
