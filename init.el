@@ -9,6 +9,7 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (wombat)))
  '(doc-view-continuous t)
+ '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
  '(markdown-command "/usr/local/bin/pandoc")
  '(org-hide-emphasis-markers t)
@@ -24,7 +25,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "forest green"))))
- '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1)))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1))))
+ '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
+ '(vimish-fold-mouse-face ((t (:weight bold))))
+ '(vimish-fold-overlay ((t (:foreground "dark cyan")))))
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (load "ess-site")
 
@@ -788,7 +792,7 @@
 ;; =============================================================================
 ; Highlight matching parentheses (from Gabor's emacs)
 (require 'highlight-parentheses)
-(setq hl-paren-colors '("blue" "gold" "IndianRed" "cyan" "green" "orange"
+(setq hl-paren-colors '("DeepSkyBlue1" "gold" "IndianRed" "cyan" "green" "orange"
 			"magenta"))
 
 (defun hpm-on ()
