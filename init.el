@@ -16,7 +16,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -837,6 +837,11 @@ Version 2016-07-22"
 ;; ref: http://orgmode.org/manual/Closing-items.html
 (setq org-log-done 'time)
 
+;; org-mode export to markdown
+;; ref: https://stackoverflow.com/a/22990257/5443003
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 
 ;; Global shortcut for forward/backword word
 ;; -----------------------------------------------------------------------------
@@ -902,3 +907,17 @@ Version 2016-07-22"
                               (kill-buffer (current-buffer))))
 
 
+;; latex
+;; =============================================================================
+(require 'ox-pandoc)
+(setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+
+
+;; org-mode to export
+;; =============================================================================
+;; ref: http://kitchingroup.cheme.cmu.edu/blog/2015/06/11/ox-pandoc-org-mode-+-org-ref-to-docx-with-bibliographies/#sec-2
+(setq helm-bibtex-format-citation-functions
+      '((org-mode . (lambda (x) (insert (concat
+                                         "\\cite{"
+                                         (mapconcat 'identity x ",")
+                                         "}")) ""))))
