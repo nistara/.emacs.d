@@ -877,6 +877,7 @@ Version 2016-07-22"
 ;; ref: https://github.com/jkitchin/org-ref/issues/423
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 
+
 ;; Setting hyper keys
 ;; ref: http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
@@ -913,7 +914,7 @@ Version 2016-07-22"
 (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
 
 
-;; org-mode to export
+;; org-mode to export doc with ox-pandoc
 ;; =============================================================================
 ;; ref: http://kitchingroup.cheme.cmu.edu/blog/2015/06/11/ox-pandoc-org-mode-+-org-ref-to-docx-with-bibliographies/#sec-2
 (setq helm-bibtex-format-citation-functions
@@ -921,3 +922,8 @@ Version 2016-07-22"
                                          "\\cite{"
                                          (mapconcat 'identity x ",")
                                          "}")) ""))))
+
+
+;; org-mode image size:
+;; =============================================================================
+(setq org-image-actual-width nil)
