@@ -16,7 +16,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column pdf-tools zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -780,6 +780,9 @@
 
 ;; Color of the fringe
 (set-face-background 'fringe "#181a26")
+;; (set-face-background 'git-gutter:modified "purple") ;; background color
+(set-face-foreground 'git-gutter:added "SeaGreen4")
+(set-face-foreground 'git-gutter:deleted "IndianRed")
 
 
 
@@ -927,3 +930,32 @@ Version 2016-07-22"
 ;; org-mode image size:
 ;; =============================================================================
 (setq org-image-actual-width nil)
+
+
+;; org-mode executing code-conversion-map-vector
+;; =============================================================================
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (org . t)
+   (sh . t)
+   (R . t)))
+
+
+;; ESS indentation
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/632
+(add-hook 'ess-mode-hook (lambda () (setq ess-arg-function-offset nil)))
+
+
+;; Tab completion in ESS R
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/29281
+(require 'auto-complete-config)
+(ac-config-default)
+(define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
+;; Get tab completion in R script files
+;; See this page here
+;; https://stat.ethz.ch/pipermail/ess-help/2013-March/008719.html
+;; Make sure that this is after the auto-complete package initialization
+(setq  ess-tab-complete-in-script t)
