@@ -126,7 +126,8 @@
 ;; ESS Keybinding for C-RET so that I can use Cmd-RET as well
 ;; =============================================================================
 ;; https://stat.ethz.ch/pipermail/ess-help/2013-November/009530.html
-(define-key ess-mode-map (kbd "<s-return>") 'ess-eval-region-or-line-and-step) 
+(define-key ess-mode-map (kbd "<s-return>") 'ess-eval-region-or-line-and-step)
+(define-key ess-mode-map (kbd "<M-return>") 'ess-eval-line) 
 
 
 ;;;; multiple cursors: http://pragmaticemacs.com/emacs/multiple-cursors/
@@ -941,6 +942,30 @@ Version 2016-07-22"
    (sh . t)
    (R . t)))
 
+;; org-mode ovverride key bindings
+;; =============================================================================
+;; ref: https://superuser.com/a/828744
+
+(require 'org)
+(define-key org-mode-map (kbd "<M-S-up>") nil)
+(define-key org-mode-map (kbd "<M-S-down>") nil)
+(define-key org-mode-map (kbd "<M-up>") nil)
+(define-key org-mode-map (kbd "<M-down>") nil)
+(define-key org-mode-map (kbd "<M-S-left>") nil)
+(define-key org-mode-map (kbd "<M-S-right>") nil)
+;; (define-key org-mode-map (kbd "<M-left>") nil)
+(define-key org-mode-map (kbd "<S-left>") nil)
+(define-key org-mode-map (kbd "<S-right>") nil)
+(define-key org-mode-map (kbd "<S-up>") nil)
+(define-key org-mode-map (kbd "<S-down>") nil)
+;; (define-key org-mode-map (kbd "<M-right>") nil) 
+(define-key org-mode-map (kbd "C-<tab>") nil)
+(define-key org-mode-map (kbd "C-S-<tab>") nil)
+(define-key org-mode-map (kbd "<C-up>") nil)
+(define-key org-mode-map (kbd "<C-down>") nil)
+(define-key org-mode-map (kbd "<C-S-down>") nil)
+(define-key org-mode-map (kbd "<C-S-up>") nil)
+(setq org-support-shift-select 'always)
 
 ;; ESS indentation
 ;; =============================================================================
