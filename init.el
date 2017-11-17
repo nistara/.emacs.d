@@ -156,9 +156,15 @@
 (global-set-key (kbd "s-d") 'kill-whole-line)
 
 
-;; Backward kill sentence (like I do in Macs)
+;; Backward kill line
 ;; =============================================================================
-(global-set-key (kbd "<s-backspace>") 'backward-kill-sentence)
+;; ref:https://www.emacswiki.org/emacs/BackwardKillLine
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))
+
+(global-set-key (kbd "<s-backspace>") 'backward-kill-line)
 
 
 ;; Switching between visible windows easily:
@@ -354,12 +360,17 @@
                (if (file-directory-p "/Users/nistara/projects/journal/")
 		   (setq-default journal-dir "/Users/nistara/projects/journal/"))
 
+;; journal: https://www.emacswiki.org/emacs/Journal
+ (load "meetings")
+               (if (file-directory-p "/Users/nistara/projects/meetings/")
+		   (setq-default meeting-dir "/Users/nistara/projects/meetings/"))
+
 
 (setq insert-directory-program "gls" dired-use-ls-dired t)
 
 
 ;; So emacs opens shell in the same buffer that called it (instead of opening in a separate one
-;; and messing up my arrangment
+;; and messing up my arrangement
 ;; https://www.reddit.com/r/emacs/comments/gjqki/is_there_any_way_to_tell_emacs_to_not/#bottom-comments
 ;; http://www.chemie.fu-berlin.de/chemnet/use/info/emacs/emacs_20.html#SEC157
 
@@ -984,3 +995,20 @@ Version 2016-07-22"
 ;; https://stat.ethz.ch/pipermail/ess-help/2013-March/008719.html
 ;; Make sure that this is after the auto-complete package initialization
 (setq  ess-tab-complete-in-script t)
+
+
+;; Backward kill words
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/30404
+(defun backward-kill-char-or-word ()
+  (interactive)
+  (cond 
+   ((looking-back (rx (char word)) 1)
+    (backward-kill-word 1))
+   ((looking-back (rx (char blank)) 1)
+    (delete-horizontal-space t))
+   (t
+    (backward-delete-char 1))))
+
+(global-set-key (kbd "<M-backspace>") 'backward-kill-char-or-word)
+
