@@ -544,6 +544,7 @@
 ;; http://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
 ;; For parens you can do M-(
 (global-set-key (kbd "M-\"") 'insert-pair)
+(global-set-key (kbd "M-(") 'insert-pair)
 (global-set-key (kbd "M-[") 'insert-pair)
 
 ;; Finding file
@@ -1012,3 +1013,95 @@ Version 2016-07-22"
 
 (global-set-key (kbd "<M-backspace>") 'backward-kill-char-or-word)
 
+
+;; Inline images in org-mode
+;; =============================================================================
+
+;; ref: https://lists.gnu.org/archive/html/emacs-orgmode/2012-08/msg01402.html
+;; -----------------------------------------------------------------------------
+;; (setq org-image-actual-width 300)
+;;   ;; => always resize inline images to 300 pixels
+
+(setq org-image-actual-width '(600))
+  ;; => if there is a #+ATTR.*: width="200", resize to 200,
+     ;; otherwise resize to 400
+
+;; (setq org-image-actual-width nil)
+;;   ;; => if there is a #+ATTR.*: width="200", resize to 200,
+;;      ;; otherwise don't resize
+;; 
+;; (setq org-image-actual-width t)
+;;   ;; => Never resize and use original width (the default)
+;; -----------------------------------------------------------------------------
+
+;; ;; code to preview pdf images not working
+;; (add-to-list 'image-type-file-name-regexps '("\\.pdf\\'" . imagemagick))
+;; (add-to-list 'image-file-name-extensions "pdf")
+;; (setq imagemagick-types-inhibit (remove 'PDF imagemagick-types-inhibit))
+;; (setq org-image-actual-width 600)
+
+
+
+;; Increase size of latex (math) fragments
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/11272625
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+
+;; org mode
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/22180
+;; ref: http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
+
+;; `with-eval-after-load' macro was introduced in Emacs 24.x
+;; In older Emacsen, you can do the same thing with `eval-after-load'
+;; and '(progn ..) form.
+(with-eval-after-load 'org       
+  (setq org-startup-indented t) ; Enable `org-indent-mode' by default
+  ;; (setq org-ellipsis "↴")
+  (setq org-ellipsis " ▼")
+  (add-hook 'org-mode-hook #'visual-line-mode))
+
+;; Recommendation: You should not directly require a package (even though doing
+;; so will also work). Doing so will make emacs load that whole package at
+;; startup and could result in slower startup. Instead, you should allow the
+;; org package to get automatically loaded as configured in the package itself,
+;; and then do org-specific setup in the with-eval-after-load or eval-after-load
+;; form.
+
+
+;; Add matching parentheses
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/915
+(defun close-all-parentheses ()
+  (interactive "*")
+  (let ((closing nil))
+    (save-excursion
+      (while (condition-case nil
+         (progn
+           (backward-up-list)
+           (let ((syntax (syntax-after (point))))
+             (case (car syntax)
+               ((4) (setq closing (cons (cdr syntax) closing)))
+               ((7 8) (setq closing (cons (char-after (point)) closing)))))
+           t)
+           ((scan-error) nil))))
+    (apply #'insert (nreverse closing))))
+
+
+;; org-mode subtree
+;; =============================================================================
+(global-set-key (kbd "M-s <up>") 'org-move-subtree-up)
+(global-set-key (kbd "M-s <down>") 'org-move-subtree-down)
+
+
+;; org-mode flyspell
+;; =============================================================================
+;; ref: https://joelkuiper.eu/spellcheck_emacs
+(dolist (hook '(org-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
