@@ -8,6 +8,9 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (wombat)))
+ '(custom-safe-themes
+   (quote
+    ("40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
@@ -16,7 +19,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -807,14 +810,14 @@
 ;; Highlight parenthesis
 ;; =============================================================================
 ; Highlight matching parentheses (from Gabor's emacs)
-(require 'highlight-parentheses)
-(setq hl-paren-colors '("DeepSkyBlue1" "gold" "IndianRed" "cyan" "green" "orange"
-			"magenta"))
-
-(defun hpm-on ()
-  (highlight-parentheses-mode t))
-(add-hook 'ess-mode-hook 'hpm-on)
-(add-hook 'inferior-ess-mode-hook 'hpm-on)
+;; (require 'highlight-parentheses)
+;; (setq hl-paren-colors '("DeepSkyBlue1" "gold" "IndianRed" "cyan" "green" "orange"
+;; 			"magenta"))
+;; 
+;; (defun hpm-on ()
+;;   (highlight-parentheses-mode t))
+;; (add-hook 'ess-mode-hook 'hpm-on)
+;; (add-hook 'inferior-ess-mode-hook 'hpm-on)
 
 
 ;; Select/mark current line
@@ -1105,3 +1108,10 @@ Version 2016-07-22"
   '(progn
      (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+
+
+;; y or n and sentences
+;; =============================================================================
+;; ref: https://sriramkswamy.github.io/dotemacs/
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq sentence-end-double-space nil)
