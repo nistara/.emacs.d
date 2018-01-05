@@ -19,7 +19,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -386,6 +386,10 @@
 ;; http://pragmaticemacs.com/emacs/a-better-shortcut-for-delete-frame/
 (global-set-key (kbd "C-x w") 'delete-frame)
 
+
+;; Easily move between buffers
+;; =============================================================================
+;; to do 
 
 ;; Stop emacs from locking files: https://www.emacswiki.org/emacs/LockFiles
 ;; =============================================================================
@@ -922,6 +926,10 @@ Version 2016-07-22"
 
 ;; stop emacs from asking confirmation to kill buffer
 ;; ref: https://superuser.com/a/354900
+(global-set-key (kbd "s-w") (lambda ()
+                              (interactive)
+                              (kill-buffer (current-buffer))))
+
 (global-set-key (kbd "C-x k") (lambda ()
                               (interactive)
                               (kill-buffer (current-buffer))))
@@ -1115,3 +1123,20 @@ Version 2016-07-22"
 ;; ref: https://sriramkswamy.github.io/dotemacs/
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq sentence-end-double-space nil)
+
+
+;; Synosaurus lookup
+;; =============================================================================
+(global-set-key (kbd "M-s s") 'synosaurus-lookup)
+
+
+;; Subtly flash the modeline instead of irritating screen flashing
+;; =============================================================================
+;; ref: https://www.emacswiki.org/emacs/AlarmBell
+(setq ring-bell-function
+      (lambda ()
+        (let ((orig-fg (face-foreground 'mode-line)))
+          (set-face-foreground 'mode-line "#F2804F")
+          (run-with-idle-timer 0.1 nil
+                               (lambda (fg) (set-face-foreground 'mode-line fg))
+                               orig-fg))))
