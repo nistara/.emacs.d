@@ -1143,5 +1143,11 @@ Version 2016-07-22"
 
 
 ;; Org Mode: Prevent editing of text within collapsed subtree
+;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/2091
 (setq-default org-catch-invisible-edits 'smart)
+
+
+;; Shortcut for revert-buffer
+;; =============================================================================
+(global-set-key (kbd "s-r") 'revert-buffer)
