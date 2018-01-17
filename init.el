@@ -7,10 +7,11 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(beacon-mode t)
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
-    ("40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
+    ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
@@ -19,7 +20,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (beacon evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -531,6 +532,9 @@
 
 ;; Shorcut to open notes folder
 (global-set-key (kbd "C-c note") (lambda() (interactive)(find-file "~/projects/journal/notes")))
+
+;; Shorcut to open meetings folder
+(global-set-key (kbd "C-c meet") (lambda() (interactive)(find-file "~/projects/meetings")))
 
 ;; Shortcut to open bats folder
 (global-set-key (kbd "C-c bats") (lambda() (interactive)(find-file "~/projects/bats")))
@@ -1151,3 +1155,9 @@ Version 2016-07-22"
 ;; Shortcut for revert-buffer
 ;; =============================================================================
 (global-set-key (kbd "s-r") 'revert-buffer)
+
+
+;; Org heading mobility
+;; =============================================================================
+(global-set-key (kbd "C-c <C-right>") 'org-next-visible-heading)
+(global-set-key (kbd "C-c <C-left>") 'org-previous-visible-heading)
