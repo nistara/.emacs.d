@@ -1161,3 +1161,11 @@ Version 2016-07-22"
 ;; =============================================================================
 (global-set-key (kbd "C-c <C-right>") 'org-next-visible-heading)
 (global-set-key (kbd "C-c <C-left>") 'org-previous-visible-heading)
+
+
+;; Shortcut for current working drafts
+;; =============================================================================
+(global-set-key (kbd "C-c d1")
+		(lambda()
+		  (interactive)
+		  (find-file "~/projects/flu-net/notes/org-draft/flu-net.org")))
