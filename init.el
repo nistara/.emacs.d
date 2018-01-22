@@ -20,7 +20,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -1169,3 +1169,41 @@ Version 2016-07-22"
 		(lambda()
 		  (interactive)
 		  (find-file "~/projects/flu-net/notes/org-draft/flu-net.org")))
+
+
+;; Screenshot in org-mode
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/31868530/5443003
+(defun my-org-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the
+same directory as the org-buffer and insert a link to this file."
+  (interactive)
+  (org-display-inline-images)
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat (file-name-nondirectory (buffer-file-name))
+                  "_imgs/"
+                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+  (unless (file-exists-p (file-name-directory filename))
+    (make-directory (file-name-directory filename)))
+  ; take screenshot
+  (if (eq system-type 'darwin)
+      (call-process "screencapture" nil nil nil "-i" filename))
+  (if (eq system-type 'gnu/linux)
+      (call-process "import" nil nil nil filename))
+  ; insert into file if correctly taken
+  (if (file-exists-p filename)
+    (insert (concat "[[file:" filename "]]"))))
+
+
+
+;; Commecting to mac dictionary
+;; =============================================================================
+;; ref: https://github.com/xuchunyang/osx-dictionary.el
+
+(require 'osx-dictionary)
+
+;; Key bindings
+(global-set-key (kbd "C-c d") 'osx-dictionary-search-word-at-point)
+;; (global-set-key (kbd "C-c i") 'osx-dictionary-search-input)
