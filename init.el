@@ -1,3 +1,4 @@
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -16,11 +17,12 @@
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
  '(markdown-command "/usr/local/bin/pandoc")
+ '(org-bullets-bullet-list (quote ("○" "○" "○" "✸" "✿" "◉")))
  '(org-hide-emphasis-markers t)
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -37,13 +39,24 @@
 (load "ess-site")
 
 
-
+;; ref: https://github.com/dholm/benchmark-init-el
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
 
+(require 'benchmark-init)
+;; To disable collection of benchmark data after init is done.
+(add-hook 'after-init-hook 'benchmark-init/deactivate)
+
+
+;; use package
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  ;; (add-to-list 'load-path "<path where use-package is installed>")
+  (require 'use-package))
 
 
 (require 'package)
@@ -52,6 +65,7 @@
 
 (package-initialize)
 (elpy-enable)
+
 
 
 ;; So that stuff similar to terminal is used
@@ -542,12 +556,17 @@
 ;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
 (global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/flu-net")))
+(global-set-key (kbd "C-c ebo") (lambda() (interactive)(find-file "~/projects/ebo-net")))
+(global-set-key (kbd "C-c dis") (lambda() (interactive)(find-file "~/projects/disnet")))
 
 ;; Shortcut to open Projects folder in Dropbox
 (global-set-key (kbd "C-c dpo") (lambda() (interactive)(find-file "~/Dropbox/UC Davis/Projects")))
 
 ;; Shortcut to open projects folder 
 (global-set-key (kbd "C-c pro") (lambda() (interactive)(find-file "~/projects")))
+
+;; Shortcut to hugo blog folder
+(global-set-key (kbd "C-c hugo") (lambda() (interactive)(find-file "~/projects/hugo-blog")))
 
 
 ;; Insert ""/[]/() around highlighted word:
@@ -856,6 +875,7 @@ Version 2016-07-22"
 ;; org-mode
 ;; -----------------------------------------------------------------------------
 ;; ref: http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -917,7 +937,9 @@ Version 2016-07-22"
     org-edit-src-content-indentation 0)
 
 
+
 ;; Fill column indicator to mark column
+;; =============================================================================
 (require 'fill-column-indicator)
 
 
@@ -1047,6 +1069,7 @@ Version 2016-07-22"
 ;; 
 ;; (setq org-image-actual-width t)
 ;;   ;; => Never resize and use original width (the default)
+
 ;; -----------------------------------------------------------------------------
 
 ;; ;; code to preview pdf images not working
@@ -1055,6 +1078,12 @@ Version 2016-07-22"
 ;; (setq imagemagick-types-inhibit (remove 'PDF imagemagick-types-inhibit))
 ;; (setq org-image-actual-width 600)
 
+
+
+;; show inline images by default
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/14776/16948
+(setq org-startup-with-inline-images t)
 
 
 ;; Increase size of latex (math) fragments
@@ -1205,5 +1234,136 @@ same directory as the org-buffer and insert a link to this file."
 (require 'osx-dictionary)
 
 ;; Key bindings
-(global-set-key (kbd "C-c d") 'osx-dictionary-search-word-at-point)
-;; (global-set-key (kbd "C-c i") 'osx-dictionary-search-input)
+(global-set-key (kbd "M-s d") 'osx-dictionary-search-word-at-point)
+;; (global-set-key (kbd "C-c ds") 'osx-dictionary-search-input)
+
+
+
+;; Rmd insert code chunk
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/27419/16948
+
+(defun tws-insert-r-chunk (header) 
+  "Insert an r-chunk in markdown mode. Necessary due to interactions between polymode and yas snippet" 
+  (interactive "sHeader: ") 
+  (insert (concat "```{r " header "}\n\n```")) 
+  (forward-line -1))
+
+(global-set-key (kbd "M-s r") 'tws-insert-r-chunk)
+
+
+;; Org-mode changing font appearence
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/5892/16948
+(add-to-list 'org-emphasis-alist
+             '("*" (:foreground "orange")
+               ))
+
+(add-to-list 'org-emphasis-alist
+             '("~" (:background "RoyalBlue4")
+               ))
+
+
+;; emacs color picker
+;; =============================================================================
+;; url: http://raebear.net/comp/emacscolors.html
+
+
+
+;; org-mode org-bullets
+;; =============================================================================
+;; (require 'org-bullets)
+;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (put 'narrow-to-region 'disabled nil)
+
+
+;; Using deft package
+;; =============================================================================
+;; ref: https://github.com/jrblevin/deft
+;; (require 'deft)
+;; ;; (setq deft-extensions '("txt" "tex" "org"))
+;; (setq deft-extensions '("org"))
+;; (setq deft-directory "~/projects/research-notes")
+;; (setq deft-recursive t)
+;; (setq deft-use-filename-as-title nil)
+;; (setq deft-use-filter-string-for-filename t)
+;; (setq deft-file-naming-rules '((noslash . "-")
+;;                                (nospace . "-")
+;;                                (case-fn . downcase)))
+
+
+
+;; ox-extra
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/27828/16948
+;; ref: https://emacs.stackexchange.com/a/17677/16948
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
+
+;; org-mode view tags by setting paths to Agenda
+;; =============================================================================
+;; ref:https://emacs.stackexchange.com/a/23820/16948
+(setq org-agenda-files (apply 'append
+                  (mapcar
+                   (lambda (directory)
+                 (directory-files-recursively
+                  directory org-agenda-file-regexp))
+                   '("~/projects/"))))
+
+
+
+;; Getting flycheck
+;; =============================================================================
+;; It's istalled, but not loading it when I start emacs, since it takes time
+
+;; IVY Swiper search
+;; =============================================================================
+;; ref: http://oremacs.com/swiper/#getting-started
+;; ref: https://github.com/basille/.emacs.d
+(global-set-key (kbd "C-s") 'swiper)
+
+
+
+;; Send line to shell
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/7053298/5443003
+(defun sh-send-line-or-region (&optional step)
+  (interactive ())
+  (let ((proc (get-process "shell"))
+        pbuf min max command)
+    (unless proc
+      (let ((currbuff (current-buffer)))
+        (shell)
+        (switch-to-buffer currbuff)
+        (setq proc (get-process "shell"))
+        ))
+    (setq pbuff (process-buffer proc))
+    (if (use-region-p)
+        (setq min (region-beginning)
+              max (region-end))
+      (setq min (point-at-bol)
+            max (point-at-eol)))
+    (setq command (concat (buffer-substring min max) "\n"))
+    (with-current-buffer pbuff
+      (goto-char (process-mark proc))
+      (insert command)
+      (move-marker (process-mark proc) (point))
+      ) ;;pop-to-buffer does not work with save-current-buffer -- bug?
+    (process-send-string  proc command)
+    (display-buffer (process-buffer proc) t)
+    (when step 
+      (goto-char max)
+      (next-line))
+    ))
+
+(defun sh-send-line-or-region-and-step ()
+  (interactive)
+  (sh-send-line-or-region t))
+(defun sh-switch-to-process-buffer ()
+  (interactive)
+  (pop-to-buffer (process-buffer (get-process "shell")) t))
+
+(define-key sh-mode-map [(s-return)] 'sh-send-line-or-region-and-step)
+(define-key sh-mode-map [(control ?c) (control ?z)] 'sh-switch-to-process-buffer)
+
