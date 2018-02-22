@@ -1349,6 +1349,7 @@ same directory as the org-buffer and insert a link to this file."
       (goto-char (process-mark proc))
       (insert command)
       (move-marker (process-mark proc) (point))
+      (setq comint-scroll-to-bottom-on-output t)
       ) ;;pop-to-buffer does not work with save-current-buffer -- bug?
     (process-send-string  proc command)
     (display-buffer (process-buffer proc) t)
@@ -1364,6 +1365,6 @@ same directory as the org-buffer and insert a link to this file."
   (interactive)
   (pop-to-buffer (process-buffer (get-process "shell")) t))
 
-(define-key sh-mode-map [(s-return)] 'sh-send-line-or-region-and-step)
-(define-key sh-mode-map [(control ?c) (control ?z)] 'sh-switch-to-process-buffer)
+(define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
+;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
 
