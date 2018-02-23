@@ -1225,6 +1225,9 @@ same directory as the org-buffer and insert a link to this file."
   (if (file-exists-p filename)
     (insert (concat "[[file:" filename "]]"))))
 
+(global-set-key (kbd "H-s") 'my-org-screenshot)
+(global-set-key (kbd "H-d") 'org-display-inline-images)
+(global-set-key (kbd "H-d") 'org-toggle-inline-images)
 
 
 ;; Commecting to mac dictionary
@@ -1361,9 +1364,6 @@ same directory as the org-buffer and insert a link to this file."
 (defun sh-send-line-or-region-and-step ()
   (interactive)
   (sh-send-line-or-region t))
-(defun sh-switch-to-process-buffer ()
-  (interactive)
-  (pop-to-buffer (process-buffer (get-process "shell")) t))
 
 (define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
 ;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
