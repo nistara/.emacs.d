@@ -1365,6 +1365,6 @@ same directory as the org-buffer and insert a link to this file."
   (interactive)
   (sh-send-line-or-region t))
 
-(define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
+(define-key shell-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
 ;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
 
