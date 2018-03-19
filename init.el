@@ -550,8 +550,8 @@
 ;; Shorcut to open meetings folder
 (global-set-key (kbd "C-c meet") (lambda() (interactive)(find-file "~/projects/meetings")))
 
-;; Shortcut to open bats folder
-(global-set-key (kbd "C-c bats") (lambda() (interactive)(find-file "~/projects/bats")))
+;; Shortcut to open bat-tracking folder
+(global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/bat-tracking")))
 
 ;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
@@ -989,7 +989,14 @@ Version 2016-07-22"
  '((emacs-lisp . t)
    (org . t)
    (sh . t)
-   (R . t)))
+   (R . t)
+   (python . t)
+   (latex . t)))
+
+;; org-mode disable underscore to subsript on export
+;; =============================================================================
+;; use #+OPTIONS: ^:{} in your org file
+
 
 ;; org-mode ovverride key bindings
 ;; =============================================================================
@@ -1368,4 +1375,5 @@ same directory as the org-buffer and insert a link to this file."
 (require 'sh-script)
 (define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
 ;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
+
 
