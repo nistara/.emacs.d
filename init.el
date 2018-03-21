@@ -1377,3 +1377,14 @@ same directory as the org-buffer and insert a link to this file."
 ;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
 
 
+
+
+;; Add # *** to code
+;; =============================================================================
+;; Add = till end of line (based on above)
+(defun code-section-custom ()
+  (interactive)
+  (beginning-of-line)
+  (insert "#\s***\s"))
+
+(global-set-key (kbd "s-4") 'code-section-custom)
