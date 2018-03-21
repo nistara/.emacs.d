@@ -1388,3 +1388,11 @@ same directory as the org-buffer and insert a link to this file."
   (insert "#\s***\s"))
 
 (global-set-key (kbd "s-4") 'code-section-custom)
+
+;; Search for code-sections
+(defun occur-code-section ()
+  (interactive)
+  (setq regexp "# ***")
+   (occur (regexp-quote regexp)))
+
+(global-set-key (kbd "s-5") 'occur-code-section)
