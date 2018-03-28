@@ -1345,7 +1345,7 @@ same directory as the org-buffer and insert a link to this file."
     (unless proc
       (let ((currbuff (current-buffer)))
         (shell)
-        (switch-to-buffer currbuff)
+        ;; (switch-to-buffer currbuff)
         (setq proc (get-process "shell"))
         ))
     (setq pbuff (process-buffer proc))
