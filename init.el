@@ -1,4 +1,19 @@
 
+;; ref: https://github.com/dholm/benchmark-init-el
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; ref: https://github.com/dholm/benchmark-init-el
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
+(package-initialize)
+
+;; For org-mode
+(add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/lisp") 
+(add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/contrib/lisp" t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,7 +37,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -43,6 +58,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+
 (package-initialize)
 
 
@@ -702,8 +719,8 @@
 ;; Ref: https://stackoverflow.com/a/6465415/5443003
 ;; (global-set-key (kbd "M-1") 'split-window-vertically)
 ;; (global-set-key (kbd "M-2") 'split-window-horizontally)
-(global-set-key (kbd "M-1") (lambda () (interactive)(split-window-vertically) (other-window 1)))
-(global-set-key (kbd "M-2") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
+(global-set-key (kbd "M-1") (lambda () (interactive)(split-window-horizontally) (other-window 1)))
+(global-set-key (kbd "M-2") (lambda () (interactive)(split-window-vertically) (other-window 1)))
 (global-set-key (kbd "M-0") 'delete-other-windows)
 (global-set-key (kbd "M-`") 'delete-window)
 
@@ -964,6 +981,12 @@ Version 2016-07-22"
 ;; latex
 ;; =============================================================================
 (require 'ox-pandoc)
+;; default options for all output formats
+(setq org-pandoc-options '((standalone . t)))
+;; cancel above settings only for 'docx' format
+(setq org-pandoc-options-for-docx '((standalone . nil)))
+;; special settings for beamer-pdf and latex-pdf exporters
+(setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
 (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
 
 
@@ -1381,7 +1404,6 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Add # *** to code
 ;; =============================================================================
-;; Add = till end of line (based on above)
 (defun code-section-custom ()
   (interactive)
   (beginning-of-line)
@@ -1401,3 +1423,13 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "s-5") 'occur-code-section)
 
 
+;; -----------------------------------------------------------------------------
+;; open docx files in default application (ie msword)
+(setq org-file-apps
+      '(("\\.docx\\'" . default)))
+
+
+;; Magit
+;; =============================================================================
+;; ref: https://emacsair.me/2017/09/01/magit-walk-through/
+(global-set-key (kbd "C-x g") 'magit-status)
