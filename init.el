@@ -32,12 +32,16 @@
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
  '(markdown-command "/usr/local/bin/pandoc")
+ '(org-agenda-files
+   (quote
+    ("/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/bat-tracking/notes/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/bat-tracking.org" "/Users/nistara/projects/bat-tracking/notes/notes.org" "/Users/nistara/projects/disnet/inst/R/NR_prof-res.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/ebo-net/notes/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/ebo-net_notes.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/org-draft/scrap.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/org/cv.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org")))
  '(org-bullets-bullet-list (quote ("○" "○" "○" "✸" "✿" "◉")))
  '(org-hide-emphasis-markers t)
+ '(org-indirect-buffer-display (quote other-window))
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -46,7 +50,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "forest green"))))
+ '(isearch ((t (:background "orange3" :foreground "White"))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1))))
+ '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
+ '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
  '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
  '(vimish-fold-mouse-face ((t (:weight bold))))
  '(vimish-fold-overlay ((t (:foreground "dark cyan")))))
@@ -1162,6 +1169,7 @@ Version 2016-07-22"
            ((scan-error) nil))))
     (apply #'insert (nreverse closing))))
 
+(global-set-key (kbd "M-p") 'close-all-parentheses)
 
 ;; org-mode subtree
 ;; =============================================================================
@@ -1433,3 +1441,67 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 ;; ref: https://emacsair.me/2017/09/01/magit-walk-through/
 (global-set-key (kbd "C-x g") 'magit-status)
+
+
+
+;; Org-mode mark place and go backup
+;; =============================================================================
+;; ref: http://www.tonyballantyne.com/EmacsWritingTips.html
+(global-set-key (kbd "<f7>") 'org-mark-ring-push)
+(global-set-key (kbd "C-<f>") 'org-mark-ring-goto)
+
+
+
+;; Org-mode outline/toc
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/14987
+;; made some modifications to it though!!
+(defun my/open-tree-view ()
+  "Open a clone of the current buffer to the left, resize it to 30 columns, and bind <mouse-1> to jump to the same position in the base buffer."
+  (interactive)
+  (let ((new-buffer-name (concat "<tree>" (buffer-name))))
+    ;; Create tree buffer
+    (split-window-right 30)
+    (if (get-buffer new-buffer-name)
+        (switch-to-buffer new-buffer-name)  ; Use existing tree buffer
+      ;; Make new tree buffer
+      (progn  (clone-indirect-buffer new-buffer-name nil t)
+              (switch-to-buffer new-buffer-name)
+              (read-only-mode)
+              (hide-body)
+              (toggle-truncate-lines)
+
+              ;; Do this twice in case the point is in a hidden line
+              (dotimes (_ 2 (forward-line 0)))
+
+              ;; Map keys
+              (use-local-map (copy-keymap outline-mode-map))
+              (local-set-key (kbd "q") 'delete-window)
+              (mapc (lambda (key) (local-set-key (kbd key) 'my/jump-to-point-and-show))
+                    '("<mouse-1>" "RET"))))))
+
+(defun my/jump-to-point-and-show ()
+  "Switch to a cloned buffer's base buffer and move point to the cursor position in the clone."
+  (interactive)
+  (let ((buf (buffer-base-buffer)))
+    (unless buf
+      (error "You need to be in a cloned buffer!"))
+    (let ((pos (point))
+          (win (car (get-buffer-window-list buf))))
+      (if win
+          (select-window win)
+        (other-window 1)
+        (switch-to-buffer buf))
+      (widen)
+      (goto-char pos)
+      (org-narrow-to-subtree)
+      (org-show-subtree)
+      (when (invisible-p (point))
+        (show-branches)))))
+
+(global-set-key (kbd "s-t") 'my/open-tree-view)
+(global-set-key (kbd "s-m") 'my/jump-to-point-and-show)
+
+
+
+
