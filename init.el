@@ -50,6 +50,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "forest green"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "SkyBlue4"))))
+ '(font-lock-comment-face ((t (:foreground "SkyBlue4"))))
+ '(helm-selection ((t (:background "dark magenta" :distant-foreground "yellow3"))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
@@ -1503,5 +1506,34 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "s-m") 'my/jump-to-point-and-show)
 
 
+;; Inserting org header
+;; =============================================================================
+(defun org-header ()
+  (interactive
+   (insert "#+TITLE: 
+**** config options :ignore:
+#+options: author:nil
+#+OPTIONS: toc:1
+#+BIBLIOGRAPHY: 
+#+PROPERTY: session *R*
+#+PROPERTY: results silent
+#+PANDOC_OPTIONS: csl:the-lancet-infectious-diseases.csl
+#+STARTUP: latexpreview
+#+LATEX_HEADER: \\usepackage[section]{placeins}
+#+LATEX_HEADER: \\usepackage{graphicx}
+#+LATEX_HEADER: \\usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \\usepackage{placeins}
+#+LATEX_HEADER: \\usepackage{biblatex}
+#+LATEX_HEADER: \\usepackage{hyperref}
+# #+LATEX_HEADER: \\bibliographystyle{vancouver}
+#+LATEX_HEADER: \\addbibresource{~/}
 
+#+TOC: headlines 1
+\\pagebreak
+
+#+LATEX: \\listoftables
+#+LATEX: \\listoffigures
+
+\\pagebreak"))
+)
 
