@@ -34,7 +34,7 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(org-agenda-files
    (quote
-    ("/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/bat-tracking/notes/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/bat-tracking.org" "/Users/nistara/projects/bat-tracking/notes/notes.org" "/Users/nistara/projects/disnet/inst/R/NR_prof-res.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/ebo-net/notes/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/ebo-net_notes.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/org-draft/scrap.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/org/cv.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org")))
+    ("/Users/nistara/projects/bat-tracking/notes/DTRA_report/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/bat-tracking/bat-tracking.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/ebo-net/notes/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/ebo-net_notes.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/org-draft/scrap.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018-05-14_Mon_Duncan.org" "/Users/nistara/projects/meetings/2018-05-18_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-07-11_Wed_Jonna.org" "/Users/nistara/projects/org/cv.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org" "/Users/nistara/projects/workshops/SurveyStatML/nr_notes.org")))
  '(org-bullets-bullet-list (quote ("○" "○" "○" "✸" "✿" "◉")))
  '(org-hide-emphasis-markers t)
  '(org-indirect-buffer-display (quote other-window))
@@ -60,6 +60,7 @@
  '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
  '(vimish-fold-mouse-face ((t (:weight bold))))
  '(vimish-fold-overlay ((t (:foreground "dark cyan")))))
+
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (load "ess-site")
 
@@ -1146,6 +1147,8 @@ Version 2016-07-22"
   (setq org-ellipsis " ▼")
   (add-hook 'org-mode-hook #'visual-line-mode))
 
+(add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+
 ;; Recommendation: You should not directly require a package (even though doing
 ;; so will also work). Doing so will make emacs load that whole package at
 ;; startup and could result in slower startup. Instead, you should allow the
@@ -1239,6 +1242,11 @@ Version 2016-07-22"
 		(lambda()
 		  (interactive)
 		  (find-file "~/projects/flu-net/notes/org-draft/flu-net.org")))
+
+(global-set-key (kbd "C-c d2")
+		(lambda()
+		  (interactive)
+		  (find-file "~/projects/bat-tracking/notes/ch2_bat-track/bat-track.org")))
 
 
 ;; Screenshot in org-mode
@@ -1537,3 +1545,9 @@ same directory as the org-buffer and insert a link to this file."
 \\pagebreak"))
 )
 
+
+;; Change background color for dsi ssh
+;; =============================================================================
+(defun dsi-col ()
+  (interactive)
+  (set-background-color "dark blue"))
