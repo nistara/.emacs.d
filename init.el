@@ -54,6 +54,7 @@
  '(font-lock-comment-face ((t (:foreground "SkyBlue4"))))
  '(helm-selection ((t (:background "dark magenta" :distant-foreground "yellow3"))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
+ '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
@@ -568,9 +569,10 @@
 (global-set-key (kbd "s-0") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
 (global-set-key (kbd "s-9") 'eval-buffer)
 
-;; Shortcut to open journal and todo 
+;; Shortcut to open journal, todo, agenda 
 (global-set-key (kbd "s-1") 'journal)
-(global-set-key (kbd "s-2") 'todo)
+;; (global-set-key (kbd "s-2") 'todo)
+(global-set-key (kbd "s-2") (lambda() (interactive)(find-file "~/projects/journal/agenda.org")))
 
 ;; Shorcut to open notes folder
 (global-set-key (kbd "C-c note") (lambda() (interactive)(find-file "~/projects/journal/notes")))
@@ -1546,8 +1548,49 @@ same directory as the org-buffer and insert a link to this file."
 )
 
 
+;; Inserting daily agenda
+;; =============================================================================
+(defun insert-day ()
+  (interactive
+   (insert "- [ ] 08:00 -> 
+- [ ] 08:30 -> 
+- [ ] 09:00 -> 
+- [ ] 09:30 -> 
+- [ ] 10:00 -> 
+- [ ] 10:30 -> 
+- [ ] 11:00 ->  
+- [ ] 11:30 ->  
+- [ ] 12:00 ->  
+- [ ] 12:30 -> 
+- --- 13:00 -> *Lunch*
+- --- 13:30 -> *Lunch*
+- [ ] 14:00 -> 
+- [ ] 14:30 -> 
+- [ ] 15:00 -> 
+- [ ] 15:30 -> 
+- [ ] 16:00 -> 
+- [ ] 16:30 -> 
+- [ ] 17:00 -> 
+- [ ] 17:30 -> 
+- [ ] 18:00 -> 
+- [ ] 18:30 -> 
+- [ ] 19:00 -> 
+- [ ] 19:30 -> 
+- [ ] 20:00 -> 
+- [ ] 21:00 -> ")))
+
+
 ;; Change background color for dsi ssh
 ;; =============================================================================
 (defun dsi-col ()
   (interactive)
   (set-background-color "dark blue"))
+
+
+;; auto refresh dired when file changes
+;; =============================================================================
+;; (add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Org-mode mouse click for check-boxes
+;; =============================================================================
+(require 'org-mouse)
