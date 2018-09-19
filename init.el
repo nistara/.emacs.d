@@ -31,6 +31,7 @@
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
+ '(line-spacing 0.15)
  '(markdown-command "/usr/local/bin/pandoc")
  '(org-agenda-files
    (quote
@@ -49,13 +50,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
  '(cursor ((t (:background "forest green"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "SkyBlue4"))))
  '(font-lock-comment-face ((t (:foreground "SkyBlue4"))))
  '(helm-selection ((t (:background "dark magenta" :distant-foreground "yellow3"))))
+ '(highlight-changes ((t (:foreground "MediumPurple1" :underline t :slant oblique))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
- '(org-level-1 ((t (:inherit outline-1 :foreground "peru" :weight bold :height 1.1))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "plum3" :weight normal :height 1.2))))
+ '(org-level-2 ((t (:inherit outline-2 :foreground "SeaGreen4" :weight normal))))
+ '(org-level-3 ((t (:inherit outline-3 :weight normal))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
  '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
@@ -723,7 +728,7 @@
 ;; (global-visual-line-mode t)
 (setq visual-fill-column-fringes-outside-margins t
       visual-fill-column-center-text t
-      visual-fill-column-width 100)
+      visual-fill-column-width 90)
 
 
 ;; Making it more intuitive to split windows
@@ -1020,11 +1025,12 @@ Version 2016-07-22"
 
 ;; org-mode executing code-conversion-map-vector
 ;; =============================================================================
+(require 'ob-sh)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
    (org . t)
-   (sh . t)
+   (shell . t)
    (R . t)
    (python . t)
    (latex . t)))
@@ -1157,6 +1163,12 @@ Version 2016-07-22"
 ;; org package to get automatically loaded as configured in the package itself,
 ;; and then do org-specific setup in the with-eval-after-load or eval-after-load
 ;; form.
+
+
+;; Using CDLaTeX to enter math
+;; =============================================================================
+;; ref: https://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
+;; (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 
 
 ;; Add matching parentheses
@@ -1310,11 +1322,11 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/5892/16948
 (add-to-list 'org-emphasis-alist
-             '("*" (:foreground "orange")
+             '("*" (:foreground "indianred3")
                ))
 
 (add-to-list 'org-emphasis-alist
-             '("~" (:background "RoyalBlue4")
+             '("~" (:background "orchid4" :foreground "lemon chiffon")
                ))
 
 
@@ -1417,7 +1429,8 @@ same directory as the org-buffer and insert a link to this file."
   (sh-send-line-or-region t))
 
 (require 'sh-script)
-(define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
+;; (define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region-and-step)
+(define-key sh-mode-map (kbd "<s-return>") 'sh-send-line-or-region)
 ;; (define-key sh-mode-map (kbd "<C-s-return>") 'sh-switch-to-process-buffer)
 
 
@@ -1594,3 +1607,16 @@ same directory as the org-buffer and insert a link to this file."
 ;; Org-mode mouse click for check-boxes
 ;; =============================================================================
 (require 'org-mouse)
+
+
+;; Track changes
+;; =============================================================================
+;; ref:http://emacs-fu.blogspot.com/2009/05/tracking-changes.html
+;; higlight changes in documents
+(global-highlight-changes-mode t)
+(setq highlight-changes-visibility-initial-state nil); initially hide
+
+;; toggle visibility
+(global-set-key (kbd "<f6>")      'highlight-changes-visible-mode) ;; changes
+;; remove the change-highlight in region
+(global-set-key (kbd "S-<f6>")    'highlight-changes-remove-highlight)
