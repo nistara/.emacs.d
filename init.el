@@ -35,14 +35,14 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(org-agenda-files
    (quote
-    ("/Users/nistara/projects/bat-tracking/notes/DTRA_report/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/bat-tracking/bat-tracking.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/ebo-net/notes/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/ebo-net_notes.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/org-draft/scrap.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018-05-14_Mon_Duncan.org" "/Users/nistara/projects/meetings/2018-05-18_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-07-11_Wed_Jonna.org" "/Users/nistara/projects/org/cv.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org" "/Users/nistara/projects/workshops/SurveyStatML/nr_notes.org")))
+    ("~/projects/side/DTRA_bat-flyway/brian_proposal.org" "/Users/nistara/projects/VISHA/report.org" "/Users/nistara/projects/bat-tracking/notes/DTRA_report/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/bat-tracking/bat-tracking.org" "/Users/nistara/projects/bat-tracking/notes/ch2_bat-track/bat-track.org" "/Users/nistara/projects/bat-tracking/notes/ch2_bat-track/code.org" "/Users/nistara/projects/bat-tracking/notes/ch2_bat-track/paper-notes.org" "/Users/nistara/projects/bats/dissertation/dissertation.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/ebo-net/notes/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/ebo-net_notes.org" "/Users/nistara/projects/ebo-net/notes/exp.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.tmp373024ub.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/org-draft/in_process.org" "/Users/nistara/projects/flu-net/notes/org-draft/scrap.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/grass.org" "/Users/nistara/projects/journal/notes/grass.tmp37196CyT.org" "/Users/nistara/projects/journal/notes/linux_ssh.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/journal/agenda.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018-05-14_Mon_Duncan.org" "/Users/nistara/projects/meetings/2018-05-18_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018-07-11_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018-07-17_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018-08-08_Wed_Jonna.org" "/Users/nistara/projects/org/cv.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/side/DTRA_bat-flyway/proposal.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/ess-manual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/include-matrix.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/etc/TODO.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/staticmathjax/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/org-docco.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/orgmanual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/doc/Documentation_Standards.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub-symlink/link.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/sub/c.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/a.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/b.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/subdir/setupfile2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/agenda-file.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel-dangerous.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/link-in-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/links.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/macro-templates.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/no-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/normal.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-C-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-awk-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-fortran-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-header-arg-defaults.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-broken.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-maxima-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-octave-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-screen-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-sed-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-shell-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/org-exp.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/property-inheritance.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile3.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-author-year.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-unsrt.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/test/all-org-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/tests/test-1.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/development.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref-issues.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/polymode/samples/test.org" "/Users/nistara/projects/workshops/2018_RBeyondBasics/notes.org" "/Users/nistara/projects/workshops/2018_geocomputation/notes.org" "/Users/nistara/projects/workshops/SurveyStatML/nr_notes.org")))
  '(org-bullets-bullet-list (quote ("○" "○" "○" "✸" "✿" "◉")))
  '(org-hide-emphasis-markers t)
  '(org-indirect-buffer-display (quote other-window))
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -63,6 +63,7 @@
  '(org-level-3 ((t (:inherit outline-3 :weight normal))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
+ '(variable-pitch ((t (:foreground "gray90" :height 1.2 :family "verdana"))))
  '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
  '(vimish-fold-mouse-face ((t (:weight bold))))
  '(vimish-fold-overlay ((t (:foreground "dark cyan")))))
@@ -237,7 +238,7 @@
 ;; http://stackoverflow.com/questions/4886745/emacs-what-is-the-shortcut-key-to-clear-buffer
 (put 'erase-buffer 'disabled nil)
 ;; Erase buffer (something like ctrl-l)
-(global-set-key (kbd "C-c <backspace>") 'erase-buffer)
+(global-set-key (kbd "C-l") 'erase-buffer)
 
 
 
@@ -602,6 +603,9 @@
 
 ;; Shortcut to hugo blog folder
 (global-set-key (kbd "C-c hugo") (lambda() (interactive)(find-file "~/projects/hugo-blog")))
+
+;; Shortcut to open grassdata
+(global-set-key (kbd "C-c gra") (lambda() (interactive)(find-file "~/grassdata")))
 
 
 ;; Insert ""/[]/() around highlighted word:
@@ -1260,7 +1264,7 @@ Version 2016-07-22"
 (global-set-key (kbd "C-c d2")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/bat-tracking/notes/ch2_bat-track/bat-track.org")))
+		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
 
 
 ;; Screenshot in org-mode
@@ -1482,7 +1486,7 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/14987
 ;; made some modifications to it though!!
-(defun my/open-tree-view ()
+(defun org-open-tree-view ()
   "Open a clone of the current buffer to the left, resize it to 30 columns, and bind <mouse-1> to jump to the same position in the base buffer."
   (interactive)
   (let ((new-buffer-name (concat "<tree>" (buffer-name))))
@@ -1506,7 +1510,7 @@ same directory as the org-buffer and insert a link to this file."
               (mapc (lambda (key) (local-set-key (kbd key) 'my/jump-to-point-and-show))
                     '("<mouse-1>" "RET"))))))
 
-(defun my/jump-to-point-and-show ()
+(defun org-jump-to-point-and-show ()
   "Switch to a cloned buffer's base buffer and move point to the cursor position in the clone."
   (interactive)
   (let ((buf (buffer-base-buffer)))
@@ -1525,8 +1529,8 @@ same directory as the org-buffer and insert a link to this file."
       (when (invisible-p (point))
         (show-branches)))))
 
-(global-set-key (kbd "s-t") 'my/open-tree-view)
-(global-set-key (kbd "s-m") 'my/jump-to-point-and-show)
+(global-set-key (kbd "s-t") 'org-open-tree-view)
+(global-set-key (kbd "s-m") 'org-jump-to-point-and-show)
 
 
 ;; Inserting org header
@@ -1540,7 +1544,7 @@ same directory as the org-buffer and insert a link to this file."
 #+BIBLIOGRAPHY: 
 #+PROPERTY: session *R*
 #+PROPERTY: results silent
-#+PANDOC_OPTIONS: csl:the-lancet-infectious-diseases.csl
+# #+PANDOC_OPTIONS: csl:the-lancet-infectious-diseases.csl
 #+STARTUP: latexpreview
 #+LATEX_HEADER: \\usepackage[section]{placeins}
 #+LATEX_HEADER: \\usepackage{graphicx}
@@ -1620,3 +1624,31 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "<f6>")      'highlight-changes-visible-mode) ;; changes
 ;; remove the change-highlight in region
 (global-set-key (kbd "S-<f6>")    'highlight-changes-remove-highlight)
+
+
+
+;; Add Rosi or Eidolon shortcut
+;; =============================================================================
+(defun rosi ()
+  (interactive)                 ; permit invocation in minibuffer
+  (insert "/Rousettus aegyptiacus/"))
+
+(defun eid ()
+  (interactive)                 ; permit invocation in minibuffer
+  (insert "/Eidolon helvum/"))
+
+
+;; Add shortcut for recenter screen
+;; =============================================================================
+(global-set-key (kbd "s-l") 'recenter-top-bottom)
+
+
+
+
+;; Code folding
+;; =============================================================================
+(add-hook 'ess-mode-hook 'hs-minor-mode)
+
+(eval-after-load 'hideshow
+ '(progn
+   (global-set-key (kbd "C-+") 'hs-toggle-hiding)))
