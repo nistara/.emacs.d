@@ -42,7 +42,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -1640,7 +1640,7 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Add shortcut for recenter screen
 ;; =============================================================================
-(global-set-key (kbd "s-l") 'recenter-top-bottom)
+(global-set-key (kbd "s-p") 'recenter-top-bottom)
 
 
 
@@ -1651,4 +1651,10 @@ same directory as the org-buffer and insert a link to this file."
 
 (eval-after-load 'hideshow
  '(progn
-   (global-set-key (kbd "C-+") 'hs-toggle-hiding)))
+    (global-set-key (kbd "C-+") 'hs-toggle-hiding)))
+
+
+;; Open dired/folder of current buffer
+;; =============================================================================
+(global-set-key (kbd "C-x d") 'dired-jump)
+
