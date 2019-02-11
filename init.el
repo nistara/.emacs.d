@@ -27,7 +27,7 @@
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
-    ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
+    ("039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
@@ -42,7 +42,7 @@
  '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
-    (org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -1658,3 +1658,20 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 (global-set-key (kbd "C-x d") 'dired-jump)
 
+;; Human readable dired
+;; =============================================================================
+;; ref: http://pragmaticemacs.com/emacs/dired-human-readable-sizes-and-sort-by-size/
+;; (setq dired-listing-switches "-alh")
+
+;; Shortcut to open bib file
+;; =============================================================================
+(global-set-key (kbd "C-c bib")
+		(lambda()
+		  (interactive)(find-file "~/Drive/bibliography/references.bib")))
+
+
+
+;; Enable Outshine mode for ESS R
+;; =============================================================================
+;; Helps organize code in Org-mode blocks
+(add-hook 'ess-mode-hook 'outshine-mode)
