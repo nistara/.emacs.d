@@ -40,9 +40,11 @@
  '(org-hide-emphasis-markers t)
  '(org-indirect-buffer-display (quote other-window))
  '(org-replace-disputed-keys t)
+ '(org-use-speed-commands t)
+ '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter vimish-fold visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -58,15 +60,19 @@
  '(highlight-changes ((t (:foreground "MediumPurple1" :underline t :slant oblique))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
- '(org-level-1 ((t (:inherit outline-1 :foreground "plum3" :weight normal :height 1.2))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "indian red" :weight semi-bold))))
  '(org-level-2 ((t (:inherit outline-2 :foreground "SeaGreen4" :weight normal))))
  '(org-level-3 ((t (:inherit outline-3 :weight normal))))
+ '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
+ '(outshine-level-1 ((t (:foreground "sienna3"))))
+ '(outshine-level-2 ((t (:foreground "SpringGreen4"))))
+ '(outshine-level-3 ((t (:foreground "SlateBlue2"))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
- '(variable-pitch ((t (:foreground "gray90" :height 1.2 :family "verdana"))))
- '(vimish-fold-fringe ((t (:foreground "dark cyan"))))
- '(vimish-fold-mouse-face ((t (:weight bold))))
- '(vimish-fold-overlay ((t (:foreground "dark cyan")))))
+ '(variable-pitch ((t (:family "verdana"))))
+ '(writegood-duplicates-face ((t (:background "LightGoldenrod1" :foreground "deep pink" :slant italic))))
+ '(writegood-passive-voice-face ((t (:underline "DodgerBlue1"))))
+ '(writegood-weasels-face ((t (:underline "SlateGray4")))))
 
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (load "ess-site")
@@ -454,7 +460,7 @@
 ;; ESS customizations:
 ;; =============================================================================
 ;; -----------------------------------------------------------------------------
-;; For my current directory to show up in the chell prompt:---------------------
+;; For my current directory to show up in the shell prompt:---------------------
 ;; From: http://superuser.com/questions/31533/how-do-i-fix-my-prompt-in-emacs-shell-mode
 ;; http://emacs.stackexchange.com/questions/28995/bash-profile-or-bashrc-for-shell-in-emacs/28999#28999
 ;; http://stackoverflow.com/questions/27953807/how-to-set-shell-mode-prompt-in-emacs
@@ -807,8 +813,8 @@
 
 ;; Code folding
 ;; ref: https://github.com/mrkkrp/vimish-fold
-(require 'vimish-fold)
-(vimish-fold-global-mode 1)
+;; (require 'vimish-fold)
+;; (vimish-fold-global-mode 1)
 
 
 ;; ;; sending line to shell
@@ -1157,7 +1163,8 @@ Version 2016-07-22"
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
   ;; (setq org-ellipsis "↴")
   (setq org-ellipsis " ▼")
-  (add-hook 'org-mode-hook #'visual-line-mode))
+  (add-hook 'org-mode-hook #'visual-line-mode)
+(setq-default org-list-indent-offset 2))
 
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 
@@ -1535,7 +1542,7 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Inserting org header
 ;; =============================================================================
-(defun org-header ()
+(defun org-top ()
   (interactive
    (insert "#+TITLE: 
 **** config options :ignore:
@@ -1674,4 +1681,80 @@ same directory as the org-buffer and insert a link to this file."
 ;; Enable Outshine mode for ESS R
 ;; =============================================================================
 ;; Helps organize code in Org-mode blocks
-(add-hook 'ess-mode-hook 'outshine-mode)
+;; (add-hook 'ess-mode-hook 'outshine-mode)
+(global-set-key (kbd "<S-tab>") 'outshine-cycle-buffer)
+
+
+;; Enable undo-tree globally
+;; =============================================================================
+(global-undo-tree-mode)
+
+
+;; Change org-mode colors for writing
+;; =============================================================================
+(defun write-dark ()
+  (interactive)
+  (outline-hide-sublevels 1)
+  (setq mode-line-format nil)
+  (setq line-spacing 0.3)
+  (set-frame-font "Avenir Next 15" nil t)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+  )
+
+(defun write-light ()
+  (interactive)
+  (outline-hide-sublevels 1)
+  (setq mode-line-format nil)
+  (setq line-spacing 0.3)
+  (set-background-color "oldlace")
+  (set-foreground-color "black")
+  (set-frame-font "Avenir Next 15" nil t)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+  (set-face-attribute 'fringe nil
+  :foreground (face-foreground 'default)
+  :background (face-background 'default))
+  )
+
+
+;; ref: https://xiangji.me/2015/07/13/a-few-of-my-org-mode-customizations/
+;; 
+;; (defun set-buffer-variable-pitch ()
+;;     (interactive)
+;;     ;; (variable-pitch-mode t)
+;;     ;; (setq line-spacing .3)
+;;      (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+;;      (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+;;      (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+;;     )
+
+;; (add-hook 'org-mode-hook 'set-buffer-variable-pitch)
+;; (add-hook 'eww-mode-hook 'set-buffer-variable-pitch)
+;; (add-hook 'markdown-mode-hook 'set-buffer-variable-pitch)
+;; (add-hook 'Info-mode-hook 'set-buffer-variable-pitch)
+
+
+;; ;; Use variable width font faces in current buffer
+;; ;; https://www.emacswiki.org/emacs/FacesPerBuffer
+;;  (defun my-buffer-face-mode-variable ()
+;;    "Set font to a variable width (proportional) fonts in current buffer"
+;;    (interactive)
+;;    (setq buffer-face-mode-face '(:family "Avenir Next" :height 160 :width medium))
+;;    (buffer-face-mode))
+
+
+;; Write good modes
+;; =============================================================================
+;; ref: http://bnbeckwith.com/code/writegood-mode.html
+
+;; Disable conflicting outline mode command
+;; =============================================================================
+;; it overrode my M-up/down command for moving lines up or down
+    
+ (bind-keys*
+    ("<M-up>" . move-lines-up)
+    ("<M-down>" . move-lines-down))
+

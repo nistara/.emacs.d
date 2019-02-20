@@ -5,6 +5,7 @@
       '(
 	copy-to-pasteboard
 	cut-to-pasteboard
+	ess-smart-comma
 	ess-smarter-underscore
 	ess-yank
 	markdown-exdent-or-delete
@@ -17,5 +18,6 @@
 	buffer-menu
 	mouse-buffer-menu
 	mouse-set-region
+	simpleclip-cut
 	suspend-frame
 	))
