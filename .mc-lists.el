@@ -11,6 +11,7 @@
 	markdown-exdent-or-delete
 	ns-paste-secondary
 	paste-from-pasteboard
+	simpleclip-paste
 	))
 
 (setq mc/cmds-to-run-once

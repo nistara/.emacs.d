@@ -1273,6 +1273,11 @@ Version 2016-07-22"
 		  (interactive)
 		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
 
+(global-set-key (kbd "C-c d3")
+		(lambda()
+		  (interactive)
+		  (find-file "~/projects/ebo-net/notes/chapter_3/chapter_3.org")))
+
 
 ;; Screenshot in org-mode
 ;; =============================================================================
@@ -1542,7 +1547,7 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Inserting org header
 ;; =============================================================================
-(defun org-top ()
+(defun org-header ()
   (interactive
    (insert "#+TITLE: 
 **** config options :ignore:
@@ -1692,7 +1697,7 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Change org-mode colors for writing
 ;; =============================================================================
-(defun write-dark ()
+(defun writedark ()
   (interactive)
   (outline-hide-sublevels 1)
   (setq mode-line-format nil)
@@ -1703,7 +1708,7 @@ same directory as the org-buffer and insert a link to this file."
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   )
 
-(defun write-light ()
+(defun writelight ()
   (interactive)
   (outline-hide-sublevels 1)
   (setq mode-line-format nil)
@@ -1758,3 +1763,17 @@ same directory as the org-buffer and insert a link to this file."
     ("<M-up>" . move-lines-up)
     ("<M-down>" . move-lines-down))
 
+
+
+;; Fixing system trash
+;; =============================================================================
+;; ref: https://www.emacswiki.org/emacs/SystemTrash
+;; ref: https://github.com/ali-rantakari/trash
+(setq delete-by-moving-to-trash t)
+
+(defun system-move-file-to-trash (file)
+  "Use \"trash\" to move FILE to the system trash.
+When using Homebrew, install it using \"brew install trash\"."
+  (call-process (executable-find "trash")
+		nil 0 nil
+		file))
