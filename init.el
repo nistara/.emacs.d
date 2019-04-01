@@ -1814,3 +1814,15 @@ When using Homebrew, install it using \"brew install trash\"."
 ;; 
 ;; (with-eval-after-load 'ess
 ;;   (setq ess-use-company t))
+
+
+;; Run previous command like elsewhere
+;; =============================================================================
+;; ref: https://superuser.com/a/867587
+;; This so I don't have context switching issues when switching between emacs and
+;; other programs
+(progn(require 'comint)
+(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+(define-key comint-mode-map (kbd "<down>") 'comint-next-input)
+(define-key comint-mode-map (kbd "<C-up>") 'previous-line)
+(define-key comint-mode-map (kbd "<C-down>") 'next-line))
