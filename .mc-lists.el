@@ -5,11 +5,13 @@
       '(
 	copy-to-pasteboard
 	cut-to-pasteboard
+	end-of-visual-line
 	ess-smart-comma
 	ess-smarter-underscore
 	ess-yank
 	markdown-exdent-or-delete
 	ns-paste-secondary
+	org-self-insert-command
 	paste-from-pasteboard
 	simpleclip-paste
 	))

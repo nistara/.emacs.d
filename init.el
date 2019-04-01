@@ -44,7 +44,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -593,12 +593,12 @@
 (global-set-key (kbd "C-c meet") (lambda() (interactive)(find-file "~/projects/meetings")))
 
 ;; Shortcut to open bat-tracking folder
-(global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/bat-tracking")))
+(global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/3_bat-tracking")))
 
 ;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
-(global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/flu-net")))
-(global-set-key (kbd "C-c ebo") (lambda() (interactive)(find-file "~/projects/ebo-net")))
+(global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/1_flu-net")))
+(global-set-key (kbd "C-c ebo") (lambda() (interactive)(find-file "~/projects/2_ebo-net")))
 (global-set-key (kbd "C-c dis") (lambda() (interactive)(find-file "~/projects/disnet")))
 
 ;; Shortcut to open Projects folder in Dropbox
@@ -1266,17 +1266,17 @@ Version 2016-07-22"
 (global-set-key (kbd "C-c d1")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/flu-net/notes/org-draft/flu-net.org")))
+		  (find-file "~/projects/1_flu-net/notes/org-draft/flu-net.org")))
 
 (global-set-key (kbd "C-c d2")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
+		  (find-file "~/projects/3_bat-tracking/notes/draft_bat-track/bat-track.org")))
 
 (global-set-key (kbd "C-c d3")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/ebo-net/notes/chapter_3/chapter_3.org")))
+		  (find-file "~/projects/2_ebo-net/notes/chapter_3/chapter_3.org")))
 
 
 ;; Screenshot in org-mode
@@ -1777,3 +1777,40 @@ When using Homebrew, install it using \"brew install trash\"."
   (call-process (executable-find "trash")
 		nil 0 nil
 		file))
+
+;; Autocomplete in emacs ess
+;; =============================================================================
+;; ref: https://stackoverflow.com/questions/49232454/emacs-ess-how-to-auto-complete-library-function
+
+(setq ess-use-company t)
+
+;; (setq-default package-archives 
+;;               '(("melpa"        . "http://melpa.milkbox.net/packages/")
+;;                 ("gnu"          . "http://elpa.gnu.org/packages/")))
+;; (setq package-enable-at-startup nil)
+;; (package-initialize)
+;; 
+;; ;;; company
+;; (require 'company)
+;; (setq tab-always-indent 'complete)
+;; 
+;; (setq company-idle-delay 0.5
+;;       company-show-numbers t
+;;       company-minimum-prefix-length 2
+;;       company-tooltip-flip-when-above t)
+;; 
+;; (global-set-key (kbd "C-M-/") #'company-complete)
+;; (global-company-mode)
+;; 
+;; ;;; ESS
+;; (defun my-ess-hook ()
+;;   ;; ensure company-R-library is in ESS backends
+;;   (make-local-variable 'company-backends)
+;;   (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
+;;   (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
+;;         company-backends))
+;; 
+;; (add-hook 'ess-mode-hook 'my-ess-hook)
+;; 
+;; (with-eval-after-load 'ess
+;;   (setq ess-use-company t))
