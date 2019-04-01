@@ -1652,7 +1652,7 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; Add shortcut for recenter screen
 ;; =============================================================================
-(global-set-key (kbd "s-p") 'recenter-top-bottom)
+(global-set-key (kbd "s-\\") 'recenter-top-bottom)
 
 
 
