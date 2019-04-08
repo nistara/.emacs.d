@@ -24,10 +24,10 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(beacon-mode t)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (night-owl)))
  '(custom-safe-themes
    (quote
-    ("039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
+    ("4aa183d57d30044180d5be743c9bd5bf1dde686859b1ba607b2eea26fe63f491" "039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
@@ -44,7 +44,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -593,12 +593,12 @@
 (global-set-key (kbd "C-c meet") (lambda() (interactive)(find-file "~/projects/meetings")))
 
 ;; Shortcut to open bat-tracking folder
-(global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/3_bat-tracking")))
+(global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/bat-tracking")))
 
 ;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
-(global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/1_flu-net")))
-(global-set-key (kbd "C-c ebo") (lambda() (interactive)(find-file "~/projects/2_ebo-net")))
+(global-set-key (kbd "C-c flu") (lambda() (interactive)(find-file "~/projects/flu-net")))
+(global-set-key (kbd "C-c ebo") (lambda() (interactive)(find-file "~/projects/ebo-net")))
 (global-set-key (kbd "C-c dis") (lambda() (interactive)(find-file "~/projects/disnet")))
 
 ;; Shortcut to open Projects folder in Dropbox
@@ -1266,17 +1266,17 @@ Version 2016-07-22"
 (global-set-key (kbd "C-c d1")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/1_flu-net/notes/org-draft/flu-net.org")))
+		  (find-file "~/projects/flu-net/notes/org-draft/flu-net.org")))
 
 (global-set-key (kbd "C-c d2")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/3_bat-tracking/notes/draft_bat-track/bat-track.org")))
+		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
 
 (global-set-key (kbd "C-c d3")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/2_ebo-net/notes/chapter_3/chapter_3.org")))
+		  (find-file "~/projects/ebo-net/notes/chapter_3/chapter_3.org")))
 
 
 ;; Screenshot in org-mode
@@ -1816,13 +1816,36 @@ When using Homebrew, install it using \"brew install trash\"."
 ;;   (setq ess-use-company t))
 
 
-;; Run previous command like elsewhere
+;; Run previous-command like elsewhere
 ;; =============================================================================
 ;; ref: https://superuser.com/a/867587
 ;; This so I don't have context switching issues when switching between emacs and
-;; other programs
+;; other programs like iterm and Rstudio
 (progn(require 'comint)
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
 (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 (define-key comint-mode-map (kbd "<C-up>") 'previous-line)
 (define-key comint-mode-map (kbd "<C-down>") 'next-line))
+
+
+;; Run ESS on remote server
+;; =============================================================================
+;; ref: https://www.dcalacci.net/2018/remote-ess/
+(defvar R-remote-host "your-remote-server")
+(defvar R-remote-session "R-session-name")
+(defvar R-remote-directory "/path/to/your/project/directory")
+(defun R-remote (&optional remote-host session directory)
+  "Connect to the remote-host's dtach session running R."
+  (interactive (list
+                (read-from-minibuffer "R remote host: " R-remote-host)
+                (read-from-minibuffer "R remote session: " R-remote-session)
+                (read-from-minibuffer "R remote directory: " R-remote-directory)))
+  (pop-to-buffer (make-comint (concat "remote-" session)
+                              "ssh" nil "-Y" "-C" "-t" remote-host
+                              "cd" directory ";"
+                              "dtach" "-A" (concat ".dtach-" session)
+                              "-z" "-E" "-r" "none"
+                              inferior-R-program-name "--no-readline"
+                              inferior-R-args))
+  (ess-remote (process-name (get-buffer-process (current-buffer))) "R")
+  (setq comint-process-echoes t))

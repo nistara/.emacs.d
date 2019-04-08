@@ -9,6 +9,7 @@
 	ess-smart-comma
 	ess-smarter-underscore
 	ess-yank
+	indent-for-tab-command
 	markdown-exdent-or-delete
 	ns-paste-secondary
 	org-self-insert-command
