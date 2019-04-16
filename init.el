@@ -27,7 +27,7 @@
  '(custom-enabled-themes (quote (night-owl)))
  '(custom-safe-themes
    (quote
-    ("4aa183d57d30044180d5be743c9bd5bf1dde686859b1ba607b2eea26fe63f491" "039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "4aa183d57d30044180d5be743c9bd5bf1dde686859b1ba607b2eea26fe63f491" "039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
  '(initial-buffer-choice "~/projects")
@@ -61,14 +61,15 @@
  '(highlight-changes ((t (:foreground "MediumPurple1" :underline t :slant oblique))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
+ '(mode-line-buffer-id ((t (:foreground "#D6DEEB" :weight normal))))
  '(org-document-title ((t (:foreground "#FFFFFF" :weight bold :height 1.1))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "indian red" :weight semi-bold :height 1.1))))
  '(org-level-2 ((t (:inherit outline-2 :foreground "SeaGreen4" :weight normal))))
  '(org-level-3 ((t (:inherit outline-3 :weight normal))))
  '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
- '(outshine-level-1 ((t (:foreground "sienna3"))))
- '(outshine-level-2 ((t (:foreground "SpringGreen4"))))
- '(outshine-level-3 ((t (:foreground "SlateBlue2"))))
+ '(outshine-level-1 ((t (:foreground "medium purple"))))
+ '(outshine-level-2 ((t (:foreground "cadet blue"))))
+ '(outshine-level-3 ((t (:foreground "tan3"))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
  '(swiper-match-face-2 ((t (:background "OrangeRed4"))))
@@ -120,7 +121,7 @@
 
 ;; To get emacs to use the anaconda python 3, else it was using the older python 2
 ;; =============================================================================
-(setq python-shell-interpreter "/Users/nistara/anaconda3/bin/python")
+;; (setq python-shell-interpreter "/Users/nistara/anaconda3/bin/python")
 
 
 ;;(elpy-use-ipython)
@@ -599,7 +600,7 @@
 (global-set-key (kbd "C-c bat") (lambda() (interactive)(find-file "~/projects/bat-tracking")))
 
 ;; Shortcut to open scrap R file
-(global-set-key (kbd "C-c r") (lambda() (interactive)(find-file "*scratch*")))
+(global-set-key (kbd "s-4") (lambda() (interactive)(switch-to-buffer "*scratch*")))
 
 ;; Shortcut to open network folders
 (global-set-key (kbd "C-c net") (lambda() (interactive)(find-file "~/projects/epi-net")))
@@ -726,12 +727,12 @@
 ;; =============================================================================
 ;; http://stackoverflow.com/a/9448316
 ;; To see colors: M-x list-colors-display
-(set-face-attribute  'mode-line
-                 nil 
-                 ;; :background "deepskyblue3"
-                 ;; :background "deep sky blue" 		 
-                 :background "DodgerBlue4" 		 
-                 :box '(:line-width 1 :style released-button))
+;; (set-face-attribute  'mode-line
+;;                  nil 
+;;                  ;; :background "deepskyblue3"
+;;                  ;; :background "deep sky blue" 		 
+;;                  ;; :background "DodgerBlue4" 		 
+;;                  :box '(:line-width 1 :style released-button))
 
 ;; Icomplete mode
 ;; https://www.emacswiki.org/emacs/IcompleteMode
@@ -1458,14 +1459,14 @@ same directory as the org-buffer and insert a link to this file."
 
 
 
-;; Add # *** to code
-;; =============================================================================
-(defun code-section-custom ()
-  (interactive)
-  (beginning-of-line)
-  (insert "#\s***\s"))
-
-(global-set-key (kbd "s-4") 'code-section-custom)
+;; ;; Add # *** to code
+;; ;; =============================================================================
+;; (defun code-section-custom ()
+;;   (interactive)
+;;   (beginning-of-line)
+;;   (insert "#\s***\s"))
+;; 
+;; (global-set-key (kbd "s-4") 'code-section-custom)
 
 ;; Search for code-sections
 (defun occur-code-section ()
@@ -1873,3 +1874,10 @@ When using Homebrew, install it using \"brew install trash\"."
 	 nil)
 t))
 (add-hook 'kill-buffer-query-functions 'immortal-scratch)
+
+
+;; Tramp ssh
+;; =============================================================================
+;; ref: https://gitlab.com/dickoa/emacs.d/blob/master/init.org
+(setq tramp-default-method "ssh")
+

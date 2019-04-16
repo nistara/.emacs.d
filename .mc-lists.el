@@ -13,6 +13,7 @@
 	markdown-exdent-or-delete
 	ns-paste-secondary
 	org-self-insert-command
+	outshine-self-insert-command
 	paste-from-pasteboard
 	simpleclip-paste
 	))
@@ -20,6 +21,7 @@
 (setq mc/cmds-to-run-once
       '(
 	buffer-menu
+	ess-eval-region-or-line-and-step
 	mouse-buffer-menu
 	mouse-set-region
 	simpleclip-cut
