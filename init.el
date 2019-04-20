@@ -61,7 +61,9 @@
  '(highlight-changes ((t (:foreground "MediumPurple1" :underline t :slant oblique))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
+ '(mode-line ((t (:background "#0B2942" :foreground "#D6DEEB" :box (:line-width 1 :color "#264966")))))
  '(mode-line-buffer-id ((t (:foreground "#D6DEEB" :weight normal))))
+ '(mode-line-inactive ((t (:background "#011627" :foreground "#676E95" :box (:line-width 1 :color "#011627")))))
  '(org-document-title ((t (:foreground "#FFFFFF" :weight bold :height 1.1))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "indian red" :weight semi-bold :height 1.1))))
  '(org-level-2 ((t (:inherit outline-2 :foreground "SeaGreen4" :weight normal))))
@@ -615,7 +617,7 @@
 (global-set-key (kbd "C-c pro") (lambda() (interactive)(find-file "~/projects")))
 
 ;; Shortcut to hugo blog folder
-(global-set-key (kbd "C-c blog") (lambda() (interactive)(find-file "~/projects/me")))
+(global-set-key (kbd "C-c nis") (lambda() (interactive)(find-file "~/projects/nistara")))
 
 ;; Shortcut to open grassdata
 (global-set-key (kbd "C-c gra") (lambda() (interactive)(find-file "~/grassdata")))
@@ -1838,9 +1840,33 @@ When using Homebrew, install it using \"brew install trash\"."
 ;; Run ESS on remote server : PROB: c-c c-c doesn't kill process
 ;; =============================================================================
 ;; ref: https://www.dcalacci.net/2018/remote-ess/
-(defvar R-remote-host "your-remote-server")
+
+;; ;; original
+;; ;; -----------------------------------------------------------------------------
+;; (defvar R-remote-host "your-remote-server")
+;; (defvar R-remote-session "R-session-name")
+;; (defvar R-remote-directory "/path/to/your/project/directory")
+;; (defun R-remote (&optional remote-host session directory)
+;;   "Connect to the remote-host's dtach session running R."
+;;   (interactive (list
+;;                 (read-from-minibuffer "R remote host: " R-remote-host)
+;;                 (read-from-minibuffer "R remote session: " R-remote-session)
+;;                 (read-from-minibuffer "R remote directory: " R-remote-directory)))
+;;   (pop-to-buffer (make-comint (concat "remote-" session)
+;;                               "ssh" nil "-Y" "-C" "-t" remote-host
+;;                               "cd" directory ";"
+;;                               "dtach" "-A" (concat ".dtach-" session)
+;;                               "-z" "-E" "-r" "none"
+;;                               inferior-R-program-name "--no-readline"
+;;                               inferior-R-args))
+;;   (ess-remote (process-name (get-buffer-process (current-buffer))) "R")
+;;   (setq comint-process-echoes t))
+
+
+;; modifying the orig version above  up for my ebo-net project
+(defvar R-remote-host "aws_ubuntu")
 (defvar R-remote-session "R-session-name")
-(defvar R-remote-directory "/path/to/your/project/directory")
+(defvar R-remote-directory "~/projects/ebo-net")
 (defun R-remote (&optional remote-host session directory)
   "Connect to the remote-host's dtach session running R."
   (interactive (list
@@ -1856,7 +1882,6 @@ When using Homebrew, install it using \"brew install trash\"."
                               inferior-R-args))
   (ess-remote (process-name (get-buffer-process (current-buffer))) "R")
   (setq comint-process-echoes t))
-
 
 
 ;; Set R as major mode
