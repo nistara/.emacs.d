@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	backward-kill-line
 	copy-to-pasteboard
 	cut-to-pasteboard
 	end-of-visual-line
@@ -24,6 +25,7 @@
 	ess-eval-region-or-line-and-step
 	mouse-buffer-menu
 	mouse-set-region
+	polymode-export
 	simpleclip-cut
 	suspend-frame
 	))

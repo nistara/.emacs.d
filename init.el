@@ -1,4 +1,4 @@
-
+;; 
 ;; ref: https://github.com/dholm/benchmark-init-el
 (require 'package)
 (add-to-list 'package-archives
@@ -35,8 +35,12 @@
  '(markdown-command "/usr/local/bin/pandoc")
  '(org-agenda-files
    (quote
-    ("/Users/nistara/projects/VISHA/report.org" "/Users/nistara/projects/bat-tracking/notes/DTRA_report/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/bat-track.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/discussion.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/new_draft.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/notes_other.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/notes_paper.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/scrap.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/sedation.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/supplementary.org" "/Users/nistara/projects/bat-tracking/notes/clear_thoughts.org" "/Users/nistara/projects/bat-tracking/notes/clear_thoughts2.org" "/Users/nistara/projects/disnet.Rcheck/00_pkg_src/disnet/inst/notes.org" "/Users/nistara/projects/disnet.Rcheck/disnet/notes.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/dissertation/dissertation/diss_requirements.org" "/Users/nistara/projects/dissertation/dissertation/dissertation.org" "/Users/nistara/projects/ebo-net/notes/chapter_3/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/draft/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/draft/exp.org" "/Users/nistara/projects/ebo-net/notes/draft/notes_other.org" "/Users/nistara/projects/ebo-net/notes/other/R-notes.org" "/Users/nistara/projects/ebo-net/notes/other/notes_grass.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.tmp58803t5k.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.tmp9204HHf.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/install_log/install-log.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/grass.org" "/Users/nistara/projects/journal/notes/linux_ssh.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/journal/agenda.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-05-14_Mon_Duncan.org" "/Users/nistara/projects/meetings/2018/2018-05-18_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-07-11_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-07-17_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-08-08_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-12-04_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-12-12_Wed_Jonna.org" "/Users/nistara/projects/meetings/2019-01-03_Thu_Jonna.org" "/Users/nistara/projects/meetings/2019-01-14_Mon_Jonna-Duncan.org" "/Users/nistara/projects/meetings/2019-02-12_Tue_Jonna.org" "/Users/nistara/projects/meetings/2019-02-20_Wed_Jonna.org" "/Users/nistara/projects/meetings/2019-02-28_Thu_Jonna.org" "/Users/nistara/projects/meetings/2019-03-29_Fri_Jonna.org" "/Users/nistara/projects/meetings/2019-04-05_Fri_Jonna.org" "/Users/nistara/projects/org/code.org" "/Users/nistara/projects/org/drag.org" "/Users/nistara/projects/org/glos.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/t.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/org/testref.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/meeting_notes/2018_notes.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/meeting_notes/2019-03-12_predict-hour.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/resources.org" "/Users/nistara/projects/side/DTRA_bat-flyway/brian_proposal.org" "/Users/nistara/projects/side/DTRA_bat-flyway/proposal.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org" "/Users/nistara/projects/side/predict_NLP/notes/2018-12-11_hector-talk.org" "/Users/nistara/projects/side/predict_NLP/notes/2018-12-11_hector-talk.tmp2718Yt0.org" "/Users/nistara/projects/side/predict_NLP/notes/notes.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/ess-manual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/include-matrix.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/etc/TODO.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/staticmathjax/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/org-docco.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/orgmanual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/doc/Documentation_Standards.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub-symlink/link.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/sub/c.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/a.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/b.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/subdir/setupfile2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/agenda-file.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel-dangerous.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/link-in-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/links.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/macro-templates.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/no-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/normal.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-C-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-awk-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-fortran-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-header-arg-defaults.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-broken.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-maxima-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-octave-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-screen-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-sed-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-shell-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/org-exp.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/property-inheritance.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile3.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-author-year.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-unsrt.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/test/all-org-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/tests/test-1.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/development.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref-issues.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/polymode/samples/test.org" "/Users/nistara/projects/workshops/2018_RBeyondBasics/notes.org" "/Users/nistara/projects/workshops/2018_geocomputation/notes.org" "/Users/nistara/projects/workshops/2018_instructor-training/training-demo_feedback.org" "/Users/nistara/projects/workshops/SurveyStatML/nr_notes.org")))
- '(org-bullets-bullet-list (quote ("○" "○" "○" "✸" "✿" "◉")))
+    ("~/.emacs.d/init.el" "/Users/nistara/projects/VISHA/report.org" "/Users/nistara/projects/bat-tracking/notes/DTRA_report/DTRA_report.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/bat-track.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/discussion.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/new_draft.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/notes_other.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/notes_paper.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/scrap.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/sedation.org" "/Users/nistara/projects/bat-tracking/notes/draft_bat-track/supplementary.org" "/Users/nistara/projects/bat-tracking/notes/clear_thoughts.org" "/Users/nistara/projects/bat-tracking/notes/clear_thoughts2.org" "/Users/nistara/projects/disnet/inst/notes.org" "/Users/nistara/projects/dissertation/dissertation/diss_requirements.org" "/Users/nistara/projects/dissertation/dissertation/dissertation.org" "/Users/nistara/projects/ebo-net/notes/chapter_3/chapter_3.org" "/Users/nistara/projects/ebo-net/notes/chapter_3/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/draft/ebo-net.org" "/Users/nistara/projects/ebo-net/notes/draft/exp.org" "/Users/nistara/projects/ebo-net/notes/draft/notes_other.org" "/Users/nistara/projects/ebo-net/notes/other/R-notes.org" "/Users/nistara/projects/ebo-net/notes/other/notes_grass.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.tmp58803t5k.org" "/Users/nistara/projects/flu-net/notes/org-draft/flu-net.tmp9204HHf.org" "/Users/nistara/projects/flu-net/notes/org-draft/icomos_poster.org" "/Users/nistara/projects/flu-net/notes/ref_notes.org" "/Users/nistara/projects/install_log/install-log.org" "/Users/nistara/projects/journal/notes/brew.org" "/Users/nistara/projects/journal/notes/compiling.org" "/Users/nistara/projects/journal/notes/grass.org" "/Users/nistara/projects/journal/notes/linux_ssh.org" "/Users/nistara/projects/journal/notes/org-info.org" "/Users/nistara/projects/journal/notes/term.org" "/Users/nistara/projects/journal/notes/virtualbox.org" "/Users/nistara/projects/journal/notes/words.org" "/Users/nistara/projects/journal/notes/writing.org" "/Users/nistara/projects/journal/agenda.org" "/Users/nistara/projects/meetings/2017/2017-11-28_Tues.org" "/Users/nistara/projects/meetings/2018/2018-01-16_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-01-23_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-02-15_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-03-01_Thu_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-04-03_Tue_Liz.org" "/Users/nistara/projects/meetings/2018/2018-04-06_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-04-25_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-05-14_Mon_Duncan.org" "/Users/nistara/projects/meetings/2018/2018-05-18_Fri_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-07-11_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-07-17_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-08-08_Wed_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-12-04_Tue_Jonna.org" "/Users/nistara/projects/meetings/2018/2018-12-12_Wed_Jonna.org" "/Users/nistara/projects/meetings/2019-01-03_Thu_Jonna.org" "/Users/nistara/projects/meetings/2019-01-14_Mon_Jonna-Duncan.org" "/Users/nistara/projects/meetings/2019-02-12_Tue_Jonna.org" "/Users/nistara/projects/meetings/2019-02-20_Wed_Jonna.org" "/Users/nistara/projects/meetings/2019-02-28_Thu_Jonna.org" "/Users/nistara/projects/meetings/2019-03-29_Fri_Jonna.org" "/Users/nistara/projects/meetings/2019-04-05_Fri_Jonna.org" "/Users/nistara/projects/meetings/2019-04-23_Tue_Jonna.org" "/Users/nistara/projects/nistara/cv/cv.org" "/Users/nistara/projects/org/code.org" "/Users/nistara/projects/org/drag.org" "/Users/nistara/projects/org/glos.org" "/Users/nistara/projects/org/org-ref-plain.org" "/Users/nistara/projects/org/orgtb.org" "/Users/nistara/projects/org/t.org" "/Users/nistara/projects/org/test.org" "/Users/nistara/projects/org/testref.org" "/Users/nistara/projects/scrap/rorg.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/meeting_notes/2018_notes.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/meeting_notes/2019-03-12_predict-hour.org" "/Users/nistara/projects/side/2019_predict_conf/predict_conf/resources.org" "/Users/nistara/projects/side/DTRA_bat-flyway/brian_proposal.org" "/Users/nistara/projects/side/DTRA_bat-flyway/proposal.org" "/Users/nistara/projects/side/dsi-proposal/draft-final.org" "/Users/nistara/projects/side/dsi-proposal/draft.org" "/Users/nistara/projects/side/dsi-proposal/proposal.org" "/Users/nistara/projects/side/predict_NLP/notes/2018-12-11_hector-talk.org" "/Users/nistara/projects/side/predict_NLP/notes/2018-12-11_hector-talk.tmp2718Yt0.org" "/Users/nistara/projects/side/predict_NLP/notes/notes.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/ess-manual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/doc/include-matrix.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/ESS/etc/TODO.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/staticmathjax/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/scripts/org-docco.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/contrib/orgmanual.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/doc/Documentation_Standards.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub-symlink/link.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/sub/c.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/a.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/pub/b.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/subdir/setupfile2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/agenda-file.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel-dangerous.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/babel.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/include2.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/link-in-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/links.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/macro-templates.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/no-heading.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/normal.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-C-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-awk-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-fortran-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-header-arg-defaults.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-broken.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-lilypond-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-maxima-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-octave-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-screen-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-sed-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/ob-shell-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/org-exp.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/property-inheritance.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-9.1.9/testing/examples/setupfile3.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-author-year.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme-unsrt.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/citeproc/readme.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/test/all-org-test.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/tests/test-1.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/README.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/development.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref-issues.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/org-ref/org-ref.org" "/Users/nistara/projects/ssh_emacs/emacs_downloads/polymode/samples/test.org" "/Users/nistara/projects/workshops/2018_RBeyondBasics/notes.org" "/Users/nistara/projects/workshops/2018_geocomputation/notes.org" "/Users/nistara/projects/workshops/2018_instructor-training/training-demo_feedback.org" "/Users/nistara/projects/workshops/SurveyStatML/nr_notes.org")))
+ '(org-bullets-bullet-list (quote ("✿" "▶" "▶" "✸" "✿" "◉")))
+ '(org-format-latex-options
+   (quote
+    (:foreground default :background default :scale 1.5 :html-foreground "white" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\["))))
  '(org-hide-emphasis-markers t)
  '(org-indirect-buffer-display (quote other-window))
  '(org-replace-disputed-keys t)
@@ -44,7 +48,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -56,33 +60,45 @@
  '(cursor ((t (:background "forest green"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "SkyBlue4"))))
  '(font-lock-comment-face ((t (:foreground "SkyBlue4"))))
+ '(font-lock-warning-face ((t (:foreground "forest green" :slant normal :weight normal))))
  '(helm-selection ((t (:background "dark magenta" :distant-foreground "yellow3"))))
  '(hi-yellow ((t (:background "saddle brown" :foreground "gold1"))))
- '(highlight-changes ((t (:foreground "MediumPurple1" :underline t :slant oblique))))
+ '(highlight-changes ((t (:foreground "DodgerBlue3" :underline t :slant oblique))))
+ '(highlight-changes-delete ((t (:foreground "IndianRed3" :underline t))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
+ '(ivy-current-match ((t (:background "#010F1D" :foreground "forest green"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
- '(mode-line ((t (:background "#0B2942" :foreground "#D6DEEB" :box (:line-width 1 :color "#264966")))))
+ '(mode-line ((t (:background "#191970" :foreground "#D6DEEB" :box (:line-width 1 :color "#2F4F2F")))))
  '(mode-line-buffer-id ((t (:foreground "#D6DEEB" :weight normal))))
- '(mode-line-inactive ((t (:background "#011627" :foreground "#676E95" :box (:line-width 1 :color "#011627")))))
- '(org-document-title ((t (:foreground "#FFFFFF" :weight bold :height 1.1))))
- '(org-level-1 ((t (:inherit outline-1 :foreground "indian red" :weight semi-bold :height 1.1))))
- '(org-level-2 ((t (:inherit outline-2 :foreground "SeaGreen4" :weight normal))))
- '(org-level-3 ((t (:inherit outline-3 :weight normal))))
+ '(mode-line-inactive ((t (:background "#383838" :foreground "#676E95" :box (:line-width 1 :color "#2F4F2F")))))
+ '(org-block ((t (:background "#141414" :foreground "#8BA2B6"))))
+ '(org-block-begin-line ((t (:background "#141414" :foreground "#8BA2B6" :slant italic))))
+ '(org-block-end-line ((t (:background "#141414" :foreground "#8BA2B6" :slant italic))))
+ '(org-document-title ((t (:foreground "#FFFFFF" :weight normal :height 1))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "#d47500" :weight normal :height 1.1))))
+ '(org-level-2 ((t (:inherit outline-2 :foreground "#009652" :weight normal :height 1.1))))
+ '(org-level-3 ((t (:inherit outline-3 :foreground "#0077BD" :weight normal :height 1.1))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande" :height 1.1))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
  '(outshine-level-1 ((t (:foreground "medium purple"))))
  '(outshine-level-2 ((t (:foreground "cadet blue"))))
  '(outshine-level-3 ((t (:foreground "tan3"))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
- '(swiper-line-face ((t (:inherit highlight :background "chartreuse4"))))
- '(swiper-match-face-2 ((t (:background "OrangeRed4"))))
- '(variable-pitch ((t (:family "verdana"))))
+ '(swiper-line-face ((t (:inherit highlight :background "#010F1D" :foreground "forest green"))))
+ '(swiper-match-face-2 ((t (:background "#4F002B" :foreground "forest green" :weight semi-bold))))
+ '(variable-pitch ((t (:height 1.05 :family "verdana"))))
  '(writegood-duplicates-face ((t (:background "LightGoldenrod1" :foreground "deep pink" :slant italic))))
  '(writegood-passive-voice-face ((t (:underline "DodgerBlue1"))))
  '(writegood-weasels-face ((t (:underline "SlateGray4")))))
 
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
-(load "ess-site")
-
+(require 'ess-site)
+;; (load "ess-site")
+;; ref for updated ess: https://stackoverflow.com/a/52315071/5443003
 
 ;; ref: https://github.com/dholm/benchmark-init-el
 (require 'package)
@@ -1363,8 +1379,8 @@ same directory as the org-buffer and insert a link to this file."
 
 ;; org-mode org-bullets
 ;; =============================================================================
-;; (require 'org-bullets)
-;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 ;; (put 'narrow-to-region 'disabled nil)
 
 
@@ -1905,4 +1921,39 @@ t))
 ;; =============================================================================
 ;; ref: https://gitlab.com/dickoa/emacs.d/blob/master/init.org
 (setq tramp-default-method "ssh")
+
+
+
+;; Spellcheck Comments
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/10170225/5443003
+
+;;; for prog modes turn on flyspell-prog-mode (checks spell only in comments)
+(dolist (hook '(lisp-mode-hook
+                emacs-lisp-mode-hook
+		ess-mode-hook
+                ruby-mode-hook
+                yaml-mode
+                python-mode-hook
+                shell-mode-hook
+                php-mode-hook
+                css-mode-hook
+                perl-mode-hook
+                javascript-mode-hook
+                LaTeX-mode-hook))
+  (add-hook hook 'flyspell-prog-mode))
+
+
+;; ;; fix color handling in org-preview-latex-fragment
+;; ;; =============================================================================
+;; ;; ref: https://emacs.stackexchange.com/a/44693/16948
+;; (let ((dvipng--plist (alist-get 'dvipng org-preview-latex-process-alist)))
+;;   (plist-put dvipng--plist :use-xcolor t)
+;;   (plist-put dvipng--plist :image-converter '("dvipng -D %D -T tight -o %O %f")))
+
+
+
+;; (setq default-frame-alist '((undecorated . t)))
+;; (setq frame-resize-pixelwise t)
+
 
