@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
 	backward-kill-line
+	beginning-of-visual-line
 	copy-to-pasteboard
 	cut-to-pasteboard
 	end-of-visual-line

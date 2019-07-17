@@ -1006,6 +1006,9 @@ Version 2016-07-22"
     org-confirm-babel-evaluate nil
     org-edit-src-content-indentation 0)
 
+;; to speed org-ref up
+;; ref: https://github.com/jkitchin/org-ref/issues/468
+(setq org-ref-show-broken-links nil)
 
 
 ;; Fill column indicator to mark column
