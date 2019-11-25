@@ -23,9 +23,12 @@
 (setq mc/cmds-to-run-once
       '(
 	buffer-menu
+	end-of-buffer
 	ess-eval-region-or-line-and-step
 	mouse-buffer-menu
 	mouse-set-region
+	org-cycle
+	org-mouse-down-mouse
 	polymode-export
 	simpleclip-cut
 	suspend-frame

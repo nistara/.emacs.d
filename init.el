@@ -48,7 +48,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -628,6 +628,9 @@
 
 ;; Shortcut to open Projects folder in Dropbox
 (global-set-key (kbd "C-c dpo") (lambda() (interactive)(find-file "~/Dropbox/UC Davis/Projects")))
+
+;; Shortcut to open Projects folder in Drive
+(global-set-key (kbd "C-c dri") (lambda() (interactive)(find-file "~/Drive/projects")))
 
 ;; Shortcut to open projects folder 
 (global-set-key (kbd "C-c pro") (lambda() (interactive)(find-file "~/projects")))
@@ -1299,12 +1302,12 @@ Version 2016-07-22"
 (global-set-key (kbd "C-c d2")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
+		  (find-file "~/projects/ebo-net/notes/chapter_3/chapter_3.org")))
 
 (global-set-key (kbd "C-c d3")
 		(lambda()
 		  (interactive)
-		  (find-file "~/projects/ebo-net/notes/chapter_3/chapter_3.org")))
+		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
 
 
 ;; Screenshot in org-mode
@@ -1384,7 +1387,6 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;; (put 'narrow-to-region 'disabled nil)
 
 
 ;; Using deft package
@@ -1729,8 +1731,8 @@ same directory as the org-buffer and insert a link to this file."
   (interactive)
   (outline-hide-sublevels 1)
   (setq mode-line-format nil)
-  (setq line-spacing 0.3)
-  (set-frame-font "Avenir Next 15" nil t)
+  (setq line-spacing 0.5)
+  (set-frame-font "Fantasque Sans Mono 16" nil t)
   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
@@ -1743,7 +1745,8 @@ same directory as the org-buffer and insert a link to this file."
   (setq line-spacing 0.3)
   (set-background-color "oldlace")
   (set-foreground-color "black")
-  (set-frame-font "Avenir Next 15" nil t)
+  ;; (set-frame-font "Avenir Next 15" nil t)
+  (set-frame-font "Fantasque Sans Mono 16" nil t)
   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
@@ -1960,3 +1963,4 @@ t))
 ;; (setq frame-resize-pixelwise t)
 
 
+(put 'narrow-to-region 'disabled nil)
