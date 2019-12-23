@@ -636,7 +636,7 @@
 (global-set-key (kbd "C-c pro") (lambda() (interactive)(find-file "~/projects")))
 
 ;; Shortcut to hugo blog folder
-(global-set-key (kbd "C-c nis") (lambda() (interactive)(find-file "~/projects/nistara")))
+(global-set-key (kbd "C-c nis") (lambda() (interactive)(find-file "~/projects/website")))
 
 ;; Shortcut to open grassdata
 (global-set-key (kbd "C-c gra") (lambda() (interactive)(find-file "~/grassdata")))

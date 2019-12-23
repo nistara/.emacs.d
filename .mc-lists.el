@@ -22,6 +22,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+	beginning-of-buffer
 	buffer-menu
 	end-of-buffer
 	ess-eval-region-or-line-and-step
