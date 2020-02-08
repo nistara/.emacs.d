@@ -48,7 +48,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -58,8 +58,12 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Menlo"))))
  '(cursor ((t (:background "forest green"))))
+ '(ess-constant-face ((t (:inherit font-lock-type-face :foreground "#60CD9D"))))
+ '(ess-function-call-face ((t (:inherit font-lock-function-name-face :foreground "HotPink3" :slant oblique))))
+ '(ess-paren-face ((t (:inherit font-lock-constant-face :foreground "#608FCD"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "SkyBlue4"))))
  '(font-lock-comment-face ((t (:foreground "SkyBlue4"))))
+ '(font-lock-string-face ((t (:foreground "#CD9D60"))))
  '(font-lock-warning-face ((t (:foreground "forest green" :slant normal :weight normal))))
  '(helm-selection ((t (:background "dark magenta" :distant-foreground "yellow3"))))
  '(hi-yellow ((t (:background "saddle brown" :foreground "gold1"))))
@@ -67,6 +71,8 @@
  '(highlight-changes-delete ((t (:foreground "IndianRed3" :underline t))))
  '(isearch ((t (:background "orange3" :foreground "White"))))
  '(ivy-current-match ((t (:background "#010F1D" :foreground "forest green"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :slant italic :height 2.0 :family "Baskerville"))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :slant italic :weight normal :height 1.7 :family "Baskerville"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
  '(mode-line ((t (:background "#191970" :foreground "#D6DEEB" :box (:line-width 1 :color "#2F4F2F")))))
  '(mode-line-buffer-id ((t (:foreground "#D6DEEB" :weight normal))))
@@ -84,9 +90,9 @@
  '(org-level-7 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(org-level-8 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
- '(outshine-level-1 ((t (:foreground "medium purple"))))
- '(outshine-level-2 ((t (:foreground "cadet blue"))))
- '(outshine-level-3 ((t (:foreground "tan3"))))
+ '(outshine-level-1 ((t (:foreground "indian red" :weight extra-bold :height 1.2))))
+ '(outshine-level-2 ((t (:foreground "goldenrod2" :weight normal :height 1.2))))
+ '(outshine-level-3 ((t (:foreground "tan3" :height 1.2))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
  '(swiper-line-face ((t (:inherit highlight :background "#010F1D" :foreground "forest green"))))
  '(swiper-match-face-2 ((t (:background "#4F002B" :foreground "forest green" :weight semi-bold))))
@@ -164,23 +170,23 @@
 (setq ess-S-underscore-when-last-character-is-a-space t)
 
 
-;; For polymode. From https://github.com/vspinu/polymode
-;; =============================================================================
-(setq load-path
-      (append '("/Users/nistara/Documents/emacs-downloads/polymode"  "/Users/nistara/Documents/emacs-downloads/polymode/modes")
-              load-path))
-(require 'poly-R)
-(require 'poly-markdown)
+;; ;; For polymode. From https://github.com/vspinu/polymode
+;; ;; =============================================================================
+;; (setq load-path
+;;       (append '("/Users/nistara/Documents/emacs-downloads/polymode"  "/Users/nistara/Documents/emacs-downloads/polymode/modes")
+;;               load-path))
+;; (require 'poly-R)
+;; (require 'poly-markdown)
 
 
-;;; MARKDOWN
-;; =============================================================================
-(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
-
-;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
+;; ;;; MARKDOWN
+;; ;; =============================================================================
+;; (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+;; 
+;; ;;; R modes
+;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
 
 
 
@@ -307,7 +313,7 @@
 ;; =============================================================================
 (global-set-key (kbd "<s-right>") 'move-end-of-line)
 (global-set-key (kbd "<s-left>") 'move-beginning-of-line)
-
+;; (global-set-key (kbd "<s-left>") 'comint-bol-or-process-mark)
 
 ;; Highlight or color characters written after 8 columns:
 ;; https://github.com/jordonbiondo/column-enforce-mode
@@ -1964,3 +1970,102 @@ t))
 
 
 (put 'narrow-to-region 'disabled nil)
+
+
+
+;; ESS controlling buffer display
+;; (setq display-buffer-alist
+;;       `(("*R Dired"
+;;          (display-buffer-reuse-window display-buffer-in-side-window)
+;;          (side . right)
+;;          (slot . -1)
+;;          (window-width . 0.33)
+;;          (reusable-frames . nil))
+;;         ("*R"
+;;          (display-buffer-reuse-window display-buffer-at-bottom)
+;;          (window-width . 0.5)
+;;          (reusable-frames . nil))
+;;         ("*Help"
+;;          (display-buffer-reuse-window display-buffer-in-side-window)
+;;          (side . right)
+;;          (slot . 1)
+;;          (window-width . 0.33)
+;;          (reusable-frames . nil))))
+
+
+(setq display-buffer-alist
+      `(("*R Dired"
+         (display-buffer-reuse-window display-buffer-in-side-window)
+         (side . right)
+         (slot . -1)
+         (window-width . 0.33)
+         (reusable-frames . nil))))
+        ;; ("*R"
+        ;;  (display-buffer-reuse-window display-buffer-at-right)
+        ;;  (window-width . 0.5)
+        ;;  (reusable-frames . nil))))
+
+
+;; Activating polymode
+;; =============================================================================
+;; ref: https://polymode.github.io/installation/
+(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+
+
+;; Piping operator for ess
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/questions/8041/how-to-implement-the-piping-operator-in-ess-mode
+
+(defun then_R_operator ()
+  "R - %>% operator or 'then' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "%>%"))
+  ;; (reindent-then-newline-and-indent))
+(define-key ess-mode-map (kbd "s->") 'then_R_operator)
+(define-key inferior-ess-mode-map (kbd "s->") 'then_R_operator)
+
+
+
+;; ess font-lock
+;; =============================================================================
+
+(setq ess-R-font-lock-keywords
+         '((ess-R-fl-keyword:modifiers . t) ; default
+           (ess-R-fl-keyword:fun-defs . t) ; default
+           (ess-R-fl-keyword:keywords . t) ; default
+           (ess-R-fl-keyword:assign-ops . t) ; default
+           (ess-R-fl-keyword:constants . t) ; default
+           (ess-fl-keyword:fun-calls . t)
+           (ess-fl-keyword:numbers . t)
+           (ess-fl-keyword:operators . t)
+           (ess-fl-keyword:delimiters . t)
+           (ess-fl-keyword:= . t)
+           (ess-R-fl-keyword:F&T . t)))
+
+   (setq inferior-R-font-lock-keywords
+         '((ess-S-fl-keyword:prompt . t) ; default
+           (ess-R-fl-keyword:messages . t) ; default
+           (ess-R-fl-keyword:modifiers . t) ; default
+           (ess-R-fl-keyword:fun-defs . t) ; default
+           (ess-R-fl-keyword:keywords . t) ; default
+           (ess-R-fl-keyword:assign-ops . t) ; default
+           (ess-R-fl-keyword:constants . t) ; default
+           (ess-fl-keyword:matrix-labels . t) ; default
+           (ess-fl-keyword:fun-calls . t)
+           (ess-fl-keyword:numbers . t)
+           (ess-fl-keyword:operators . t)
+           (ess-fl-keyword:delimiters . t)
+           (ess-fl-keyword:= . t)
+           (ess-R-fl-keyword:F&T . t)))
+
+
+
+(fset 'copy-line
+      [?\C-a ?\C-  ?\C-e ?\s-c ?\M-w])
+
+(global-set-key (kbd "s-l") 'copy-line)
+
+
+;; Key binding so command-left goes to beginning of line, but after the R prompt!
+(define-key inferior-ess-mode-map (kbd "s-<left>") 'comint-bol)
