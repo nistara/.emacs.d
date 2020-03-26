@@ -73,6 +73,7 @@
  '(ivy-current-match ((t (:background "#010F1D" :foreground "forest green"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :slant italic :height 2.0 :family "Baskerville"))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :slant italic :weight normal :height 1.7 :family "Baskerville"))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :slant italic :height 1.15 :family "Baskerville"))))
  '(match ((t (:background "RoyalBlue4" :foreground "gray100"))))
  '(mode-line ((t (:background "#191970" :foreground "#D6DEEB" :box (:line-width 1 :color "#2F4F2F")))))
  '(mode-line-buffer-id ((t (:foreground "#D6DEEB" :weight normal))))
@@ -90,7 +91,7 @@
  '(org-level-7 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(org-level-8 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
- '(outshine-level-1 ((t (:foreground "indian red" :weight extra-bold :height 1.2))))
+ '(outshine-level-1 ((t (:foreground "#4DB6CF" :weight extra-bold :height 1.2))))
  '(outshine-level-2 ((t (:foreground "goldenrod2" :weight normal :height 1.2))))
  '(outshine-level-3 ((t (:foreground "tan3" :height 1.2))))
  '(region ((t (:background "dark green" :foreground "#f6f3e8"))))
@@ -612,7 +613,7 @@
 ;; Shortcut to open journal, todo, agenda 
 (global-set-key (kbd "s-1") 'journal)
 ;; (global-set-key (kbd "s-2") 'todo)
-(global-set-key (kbd "s-2") (lambda() (interactive)(find-file "~/projects/journal/agenda.org")))
+(global-set-key (kbd "s-2") (lambda() (interactive)(find-file "~/projects/meetings/project_list.org")))
 
 ;; Shorcut to open notes folder
 (global-set-key (kbd "C-c note") (lambda() (interactive)(find-file "~/projects/journal/notes")))
@@ -1118,9 +1119,9 @@ Version 2016-07-22"
 (add-hook 'ess-mode-hook (lambda () (setq ess-arg-function-offset nil)))
 
 
-;; Tab completion in ESS R
-;; =============================================================================
-;; ref: https://emacs.stackexchange.com/a/29281
+;; ;; Tab completion in ESS R
+;; ;; =============================================================================
+;; ;; ref: https://emacs.stackexchange.com/a/29281
 (require 'auto-complete-config)
 (ac-config-default)
 (define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
@@ -1709,7 +1710,9 @@ same directory as the org-buffer and insert a link to this file."
 ;; Human readable dired
 ;; =============================================================================
 ;; ref: http://pragmaticemacs.com/emacs/dired-human-readable-sizes-and-sort-by-size/
+;; ref: https://emacs.stackexchange.com/a/5650
 ;; (setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-laGh1v --group-directories-first")
 
 ;; Shortcut to open bib file
 ;; =============================================================================
@@ -1820,6 +1823,9 @@ When using Homebrew, install it using \"brew install trash\"."
 ;; ref: https://stackoverflow.com/questions/49232454/emacs-ess-how-to-auto-complete-library-function
 
 (setq ess-use-company t)
+;; (add-hook 'after-init-hook 'global-company-mode) ;ref: https://company-mode.github.io/
+
+
 
 ;; (setq-default package-archives 
 ;;               '(("melpa"        . "http://melpa.milkbox.net/packages/")
@@ -1829,7 +1835,7 @@ When using Homebrew, install it using \"brew install trash\"."
 ;; 
 ;; ;;; company
 ;; (require 'company)
-;; (setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete)
 ;; 
 ;; (setq company-idle-delay 0.5
 ;;       company-show-numbers t
@@ -1837,20 +1843,20 @@ When using Homebrew, install it using \"brew install trash\"."
 ;;       company-tooltip-flip-when-above t)
 ;; 
 ;; (global-set-key (kbd "C-M-/") #'company-complete)
-;; (global-company-mode)
+(global-company-mode)
 ;; 
 ;; ;;; ESS
-;; (defun my-ess-hook ()
-;;   ;; ensure company-R-library is in ESS backends
-;;   (make-local-variable 'company-backends)
-;;   (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
-;;   (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
-;;         company-backends))
-;; 
-;; (add-hook 'ess-mode-hook 'my-ess-hook)
-;; 
-;; (with-eval-after-load 'ess
-;;   (setq ess-use-company t))
+(defun my-ess-hook ()
+  ;; ensure company-R-library is in ESS backends
+  (make-local-variable 'company-backends)
+  (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
+  (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
+        company-backends))
+
+(add-hook 'ess-mode-hook 'my-ess-hook)
+
+(with-eval-after-load 'ess
+  (setq ess-use-company t))
 
 
 ;; Run previous-command like elsewhere

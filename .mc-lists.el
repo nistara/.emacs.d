@@ -12,6 +12,7 @@
 	ess-smarter-underscore
 	ess-yank
 	indent-for-tab-command
+	mark-whole-word
 	markdown-exdent-or-delete
 	ns-paste-secondary
 	org-self-insert-command
@@ -22,10 +23,12 @@
 
 (setq mc/cmds-to-run-once
       '(
+	backward-kill-char-or-word
 	beginning-of-buffer
 	buffer-menu
 	end-of-buffer
 	ess-eval-region-or-line-and-step
+	markdown-outdent-or-delete
 	mouse-buffer-menu
 	mouse-set-region
 	org-cycle
