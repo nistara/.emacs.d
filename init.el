@@ -148,6 +148,7 @@
   (exec-path-from-shell-initialize))
 
 
+
 ;; To get emacs to use the anaconda python 3, else it was using the older python 2
 ;; =============================================================================
 ;; (setq python-shell-interpreter "/Users/nistara/anaconda3/bin/python")
@@ -168,11 +169,14 @@
 (ac-config-default) ;; for autocomplete
 
 
-;;for smart underscore, from http://jmonlong.github.io/Hippocamplus/emacs/#smart-underscores
+
+;; Smart underscore
 ;; =============================================================================
+;; ref: http://jmonlong.github.io/Hippocamplus/emacs/#smart-underscores
 (add-to-list 'load-path "/Users/nistara/Documents/emacs-downloads") 
 (require 'ess-smart-underscore)
 (setq ess-S-underscore-when-last-character-is-a-space t)
+
 
 
 ;; ;; For polymode. From https://github.com/vspinu/polymode
@@ -200,6 +204,7 @@
 (global-set-key (kbd "C-c o") 'occur)
 
 
+
 ;; stop indenting after single '#':
 ;; =============================================================================
 ;; http://stackoverflow.com/questions/780796/emacs-ess-mode-tabbing-for-comment-region
@@ -215,6 +220,7 @@
 ;; (add-hook 'ess-mode-hook #'my-ess-settings) 
 
 
+
 ;; ESS Keybinding for C-RET so that I can use Cmd-RET as well
 ;; =============================================================================
 ;; https://stat.ethz.ch/pipermail/ess-help/2013-November/009530.html
@@ -222,15 +228,20 @@
 (define-key ess-mode-map (kbd "<M-return>") 'ess-eval-line) 
 
 
-;;;; multiple cursors: http://pragmaticemacs.com/emacs/multiple-cursors/
+
+;; multiple cursors 
 ;; =============================================================================
+;; ref: http://pragmaticemacs.com/emacs/multiple-cursors/
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
 
-;;;; move-lines.el https://github.com/targzeta/move-lines
+
+;; move-lines.el 
 ;; =============================================================================
+;; ref: https://github.com/targzeta/move-lines
 (require 'move-lines)
 (move-lines-binding)
+
 
 
 ;; ESS switch between the R command line and the file
@@ -244,8 +255,11 @@
 ;; 					(kill-line 0)))
 
 
+
 ;; Kill whole line (because I wanted to delete from anywhere in line)
+;; =============================================================================
 (global-set-key (kbd "s-d") 'kill-whole-line)
+
 
 
 ;; Backward kill line
@@ -257,6 +271,7 @@
   (kill-line (- 1 arg)))
 
 (global-set-key (kbd "<s-backspace>") 'backward-kill-line)
+
 
 
 ;; Switching between visible windows easily:
@@ -272,17 +287,18 @@
 (global-set-key (kbd "s-b") 'ibuffer)
 
 
+
 ;; Allows use of erase-buffer (first time use sets this command):
 ;; =============================================================================
-;; http://stackoverflow.com/questions/4886745/emacs-what-is-the-shortcut-key-to-clear-buffer
+;; ref: http://stackoverflow.com/questions/4886745/emacs-what-is-the-shortcut-key-to-clear-buffer
 (put 'erase-buffer 'disabled nil)
 ;; Erase buffer (something like ctrl-l)
 (global-set-key (kbd "C-l") 'erase-buffer)
 
 
 
-
-;; Getting emacs to use the 'Marked' app:
+;; Getting emacs to use the 'Marked' app
+;; =============================================================================
 ;; http://superuser.com/questions/569517/is-there-an-extension-that-previews-markdown-instantly
 (defun markdown-preview-file ()
   "run Marked on the current file and revert the buffer"
@@ -298,6 +314,7 @@
   )
 
 
+
 ;; Fix markdown-mode's hijacking of left-word and right-word
 ;; =============================================================================
 ;; https://www.reddit.com/r/emacs/comments/51zyda/markdown_mode_hijacked_leftword_and_rightword/d7g9ix1/
@@ -305,6 +322,7 @@
 ;;   '(progn
 ;;     (define-key markdown-mode-map (kbd "M-<left>") nil)
 ;;     (define-key markdown-mode-map (kbd "M-<right>") nil)))
+
 
 
 ;; Replace highlighted text with what I type?:
@@ -325,9 +343,11 @@
 (require 'column-enforce-mode)
 
 
+
 ;; Pandoc mode:
 ;; https://joostkremers.github.io/pandoc-mode/
 ;; (add-hook 'markdown-mode-hook 'pandoc-mode)
+
 
 
 ;; Fill line with dashes till the end (column 80)
@@ -374,9 +394,8 @@
 
 
 
-
-
-;; Get defau;t copy-pasting behaviour:
+;; Get defau;t copy-pasting behaviour
+;; =============================================================================
 ;; https://www.emacswiki.org/emacs/Comments_on_CopyAndPaste
 
 (setq x-select-enable-clipboard t)
@@ -386,15 +405,12 @@
 (simpleclip-mode 1)
 
 
-
-
-
-
-
-
 ;; Adding back deleted stuff
 
- 
+
+
+;; Multiple cursors
+;; =============================================================================
 ;; Multiple cursors!!! Add one on mouse click :) 'Binding mouse events'
 ;; https://github.com/magnars/multiple-cursors.el
 (global-set-key (kbd "<C-s-mouse-1>") 'mc/add-cursor-on-click)
@@ -406,11 +422,17 @@
 ;; Above: http://emacs.stackexchange.com/questions/10879/copying-text-selected-by-multiple-cursors-to-a-new-buffer
  
  
-;; turning off echoing of the script inside the R to improve buffer speeds
+
+;; Turning off echoing of the script inside the R to improve buffer speeds
+;; =============================================================================
 ;; https://stat.ethz.ch/pipermail/ess-help/2011-March/006734.html
 (setq ess-eval-visibly-p nil)
 
-;; Toggle comment on region or line: http://stackoverflow.com/a/9697222/5443003
+
+
+;; Toggle comment on region or line
+;; =============================================================================
+;; ref: http://stackoverflow.com/a/9697222/5443003
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
     (interactive)
@@ -424,14 +446,19 @@
 (global-set-key (kbd "M-3") 'comment-or-uncomment-region-or-line)
 
 
+
 ;; Copy paste file from one directory to another
+;; =============================================================================
 ;; http://emacs.stackexchange.com/questions/5603/how-to-quickly-copy-move-file-in-emacs-dired
 (setq dired-dwim-target t)
 
 
+
 ;; Auto revert doc view mode: http://stackoverflow.com/a/4705746/5443003
+;; =============================================================================
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
+
 
 
 ;; ;; Today's date and time: http://stackoverflow.com/a/619525/5443003
@@ -447,7 +474,9 @@
 ;;   (insert (format-time-string "%A, %B %e, %Y")))
 
 
+
 ;; journal: https://www.emacswiki.org/emacs/Journal
+;; =============================================================================
  (load "journal")
                (if (file-directory-p "/Users/nistara/projects/journal/")
 		   (setq-default journal-dir "/Users/nistara/projects/journal/"))
@@ -476,17 +505,10 @@
 (global-set-key (kbd "C-x w") 'delete-frame)
 
 
-;; Easily move between buffers
-;; =============================================================================
-;; to do 
 
 ;; Stop emacs from locking files: https://www.emacswiki.org/emacs/LockFiles
 ;; =============================================================================
 (setq create-lockfiles nil)
-
-
-
-
 
 
 
@@ -510,13 +532,17 @@
 
 
 ;; ;; Highlight the cursor line.
+;; ;; ==========================================================================
 ;; (global-hl-line-mode 1)
 
-;; Highlight matching pairs.
+;; Highlight matching pairs
+;; =============================================================================
 (show-paren-mode 1)
 
 
 
+;; More ESS
+;; =============================================================================
 ;; (require 'ess-site)
 ;; (setq-default ess-dialect "R")
 ;; (require 'ess-eldoc)
@@ -558,15 +584,14 @@
 
 
 
-;; Comment even in empty lines.
+;; Comment even in empty lines
+;; =============================================================================
 (setq comment-empty-lines t)
 
 
-;;----------------------------------------------------------------------
 
 ;; Mark a word at a point.
 ;; =============================================================================
-
 (defun mark-whole-word ()
   "Mark the word where the point is."
   (interactive)
@@ -603,9 +628,11 @@
 ;;     (message "%d bookmark(s) created." count)))
 
 
+
 ;; Pomodoro: https://www.emacswiki.org/emacs/pomodoro.el
 ;; =============================================================================
 ;; (require 'pomodoro)
+
 
 
 ;; Shortcut to open and eval .emacs buffer. And Other shorcuts:
@@ -653,6 +680,7 @@
 (global-set-key (kbd "C-c gra") (lambda() (interactive)(find-file "~/grassdata")))
 
 
+
 ;; Insert ""/[]/() around highlighted word:
 ;; =============================================================================
 ;; http://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
@@ -661,9 +689,12 @@
 (global-set-key (kbd "M-(") 'insert-pair)
 (global-set-key (kbd "M-[") 'insert-pair)
 
-;; Finding file
+
+
+;; Finding file shortcut
 ;; =============================================================================
 (global-set-key (kbd "C-x o") 'find-file)
+
 
 
 ;; Bigger sized emacs window when launching:
@@ -671,6 +702,7 @@
 ;; http://emacs.stackexchange.com/a/2272
 ;; http://emacs.stackexchange.com/a/3008
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 
 
 ;; Disable menu bars when launching:
@@ -739,8 +771,9 @@
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
 
-;; To get spell check in emacs: http://emacs.stackexchange.com/questions/19175/where-is-ispell
+;; To get spell check in emacs
 ;; =============================================================================
+;; http://emacs.stackexchange.com/questions/19175/where-is-ispell
 (setq ispell-program-name "/usr/local/bin/ispell")
 
 
@@ -773,11 +806,14 @@
  ;; (icomplete-mode 1)
 
 
-;; Visual line mode: https://github.com/joostkremers/visual-fill-column
+;; Visual line mode
+;; =============================================================================
+;; https://github.com/joostkremers/visual-fill-column
 ;; (global-visual-line-mode t)
 (setq visual-fill-column-fringes-outside-margins t
       visual-fill-column-center-text t
       visual-fill-column-width 90)
+
 
 
 ;; Making it more intuitive to split windows
@@ -837,7 +873,8 @@
 
 
 
-;; For regex:
+;; For regex
+;; =============================================================================
 ;; https://www.masteringemacs.org/article/re-builder-interactive-regexp-builder
 (require 're-builder)
 (setq reb-re-syntax 'string)
@@ -896,6 +933,7 @@
 (setq initial-scratch-message nil)
 
 
+
 ;; Git gutter
 ;; =============================================================================
 ;; ref: https://github.com/syohex/emacs-git-gutter
@@ -918,6 +956,7 @@
 ;; (require 'sr-speedbar)
 
 
+
 ;; Highlight parenthesis
 ;; =============================================================================
 ; Highlight matching parentheses (from Gabor's emacs)
@@ -929,6 +968,7 @@
 ;;   (highlight-parentheses-mode t))
 ;; (add-hook 'ess-mode-hook 'hpm-on)
 ;; (add-hook 'inferior-ess-mode-hook 'hpm-on)
+
 
 
 ;; Select/mark current line
@@ -943,21 +983,22 @@ Version 2016-07-22"
 
 (global-set-key (kbd "M-l") 'xah-select-current-line)
 
-;; =============================================================================
 
 
 ;; Better shortcut for commenting
-;; -----------------------------------------------------------------------------
+;; =============================================================================
 (global-set-key (kbd "s-3") 'comment-dwim)
 
 
+
 ;; Recenter with C-l starts with top, then middle, then bottom:
-;; -----------------------------------------------------------------------------
+;; =============================================================================
 (setq recenter-positions '(top middle bottom))
 
 
+
 ;; org-mode
-;; -----------------------------------------------------------------------------
+;; =============================================================================
 ;; ref: http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
 
 (require 'org)
@@ -974,14 +1015,16 @@ Version 2016-07-22"
   '(require 'ox-md nil t))
 
 
+
 ;; Global shortcut for forward/backword word
-;; -----------------------------------------------------------------------------
+;; =============================================================================
 (global-set-key (kbd "<C-right>") 'forward-word)
 (global-set-key (kbd "<C-left>") 'left-word)
 
 
+
 ;; Getting biblio to work; using MELPA (in addition to MELPA stable)
-;; -----------------------------------------------------------------------------
+;; =============================================================================
 ;; ref: https://github.com/org-trello/org-trello/issues/195
 ;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 ;; (package-refresh-contents)
@@ -991,7 +1034,7 @@ Version 2016-07-22"
 ;; buffer is evaluated.
 
 
-;; Customizing org mode:
+;; Customizing org-ref for org-mode
 ;; -----------------------------------------------------------------------------
 (setq reftex-default-bibliography '("~/Drive/bibliography/references.bib"))
 
@@ -1014,20 +1057,25 @@ Version 2016-07-22"
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
 
 
-;; Code highlighting in org-mode
-(setq org-src-fontify-natively t
-    org-src-tab-acts-natively t
-    org-confirm-babel-evaluate nil
-    org-edit-src-content-indentation 0)
-
 ;; to speed org-ref up
 ;; ref: https://github.com/jkitchin/org-ref/issues/468
 (setq org-ref-show-broken-links nil)
 
 
+
+;; Code highlighting in org-mode
+;; =============================================================================
+(setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-confirm-babel-evaluate nil
+    org-edit-src-content-indentation 0)
+
+
+
 ;; Fill column indicator to mark column
 ;; =============================================================================
 (require 'fill-column-indicator)
+
 
 
 ;; Modifying emacs prompts
@@ -1037,7 +1085,10 @@ Version 2016-07-22"
   (remq 'process-kill-buffer-query-function
          kill-buffer-query-functions))
 
+
+
 ;; stop emacs from asking confirmation to kill buffer
+;; =============================================================================
 ;; ref: https://superuser.com/a/354900
 (global-set-key (kbd "s-w") (lambda ()
                               (interactive)
@@ -1046,6 +1097,7 @@ Version 2016-07-22"
 (global-set-key (kbd "C-x k") (lambda ()
                               (interactive)
                               (kill-buffer (current-buffer))))
+
 
 
 ;; latex
@@ -1058,6 +1110,7 @@ Version 2016-07-22"
 ;; special settings for beamer-pdf and latex-pdf exporters
 (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "xelatex")))
 (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+
 
 
 ;; org-mode to export doc with ox-pandoc
@@ -1087,12 +1140,15 @@ Version 2016-07-22"
    (python . t)
    (latex . t)))
 
+
+
 ;; org-mode disable underscore to subsript on export
 ;; =============================================================================
 ;; use #+OPTIONS: ^:{} in your org file
 
 
-;; org-mode ovverride key bindings
+
+;; org-mode override key bindings
 ;; =============================================================================
 ;; ref: https://superuser.com/a/828744
 
@@ -1117,15 +1173,18 @@ Version 2016-07-22"
 (define-key org-mode-map (kbd "<C-S-up>") nil)
 (setq org-support-shift-select 'always)
 
+
+
 ;; ESS indentation
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/632
 (add-hook 'ess-mode-hook (lambda () (setq ess-arg-function-offset nil)))
 
 
-;; ;; Tab completion in ESS R
-;; ;; =============================================================================
-;; ;; ref: https://emacs.stackexchange.com/a/29281
+
+;; Tab completion in ESS R
+;; =============================================================================
+;; ref: https://emacs.stackexchange.com/a/29281
 (require 'auto-complete-config)
 (ac-config-default)
 (define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
@@ -1150,6 +1209,7 @@ Version 2016-07-22"
     (backward-delete-char 1))))
 
 (global-set-key (kbd "<M-backspace>") 'backward-kill-char-or-word)
+
 
 
 ;; Inline images in org-mode
@@ -1187,10 +1247,12 @@ Version 2016-07-22"
 (setq org-startup-with-inline-images t)
 
 
+
 ;; Increase size of latex (math) fragments
 ;; =============================================================================
 ;; ref: https://stackoverflow.com/a/11272625
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
 
 
 ;; org mode
@@ -1218,10 +1280,12 @@ Version 2016-07-22"
 ;; form.
 
 
+
 ;; Using CDLaTeX to enter math
 ;; =============================================================================
 ;; ref: https://orgmode.org/manual/CDLaTeX-mode.html#CDLaTeX-mode
 ;; (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+
 
 
 ;; Add matching parentheses
@@ -1244,10 +1308,13 @@ Version 2016-07-22"
 
 (global-set-key (kbd "M-p") 'close-all-parentheses)
 
+
+
 ;; org-mode subtree
 ;; =============================================================================
 (global-set-key (kbd "M-s <up>") 'org-move-subtree-up)
 (global-set-key (kbd "M-s <down>") 'org-move-subtree-down)
+
 
 
 ;; org-mode flyspell
@@ -1262,6 +1329,7 @@ Version 2016-07-22"
      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 
+
 ;; y or n and sentences
 ;; =============================================================================
 ;; ref: https://sriramkswamy.github.io/dotemacs/
@@ -1272,6 +1340,7 @@ Version 2016-07-22"
 ;; Synosaurus lookup
 ;; =============================================================================
 (global-set-key (kbd "M-s s") 'synosaurus-lookup)
+
 
 
 ;; Subtly flash the modeline instead of irritating screen flashing
@@ -1286,10 +1355,12 @@ Version 2016-07-22"
                                orig-fg))))
 
 
+
 ;; Org Mode: Prevent editing of text within collapsed subtree
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/2091
 (setq-default org-catch-invisible-edits 'smart)
+
 
 
 ;; Shortcut for revert-buffer
@@ -1297,10 +1368,12 @@ Version 2016-07-22"
 (global-set-key (kbd "s-r") 'revert-buffer)
 
 
+
 ;; Org heading mobility
 ;; =============================================================================
 (global-set-key (kbd "C-c <C-right>") 'org-next-visible-heading)
 (global-set-key (kbd "C-c <C-left>") 'org-previous-visible-heading)
+
 
 
 ;; Shortcut for current working drafts
@@ -1319,6 +1392,7 @@ Version 2016-07-22"
 		(lambda()
 		  (interactive)
 		  (find-file "~/projects/bat-tracking/notes/draft_bat-track/bat-track.org")))
+
 
 
 ;; Screenshot in org-mode
@@ -1351,6 +1425,7 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "H-d") 'org-toggle-inline-images)
 
 
+
 ;; Commecting to mac dictionary
 ;; =============================================================================
 ;; ref: https://github.com/xuchunyang/osx-dictionary.el
@@ -1376,6 +1451,7 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "M-s r") 'tws-insert-r-chunk)
 
 
+
 ;; Org-mode changing font appearence
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/5892/16948
@@ -1388,6 +1464,7 @@ same directory as the org-buffer and insert a link to this file."
                ))
 
 
+
 ;; emacs color picker
 ;; =============================================================================
 ;; url: http://raebear.net/comp/emacscolors.html
@@ -1398,6 +1475,7 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 
 
 ;; Using deft package
@@ -1650,6 +1728,7 @@ same directory as the org-buffer and insert a link to this file."
 - [ ] 21:00 -> ")))
 
 
+
 ;; Change background color for dsi ssh
 ;; =============================================================================
 (defun dsi-col ()
@@ -1661,9 +1740,12 @@ same directory as the org-buffer and insert a link to this file."
 ;; =============================================================================
 ;; (add-hook 'dired-mode-hook 'auto-revert-mode)
 
+
+
 ;; Org-mode mouse click for check-boxes
 ;; =============================================================================
 (require 'org-mouse)
+
 
 
 ;; Track changes
@@ -1697,7 +1779,6 @@ same directory as the org-buffer and insert a link to this file."
 
 
 
-
 ;; Code folding
 ;; =============================================================================
 (add-hook 'ess-mode-hook 'hs-minor-mode)
@@ -1707,9 +1788,12 @@ same directory as the org-buffer and insert a link to this file."
     (global-set-key (kbd "C-+") 'hs-toggle-hiding)))
 
 
+
 ;; Open dired/folder of current buffer
 ;; =============================================================================
 (global-set-key (kbd "C-x d") 'dired-jump)
+
+
 
 ;; Human readable dired
 ;; =============================================================================
@@ -1733,9 +1817,11 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "<S-tab>") 'outshine-cycle-buffer)
 
 
+
 ;; Enable undo-tree globally
 ;; =============================================================================
 (global-undo-tree-mode)
+
 
 
 ;; Change org-mode colors for writing
@@ -1795,9 +1881,12 @@ same directory as the org-buffer and insert a link to this file."
 ;;    (buffer-face-mode))
 
 
+
 ;; Write good modes
 ;; =============================================================================
 ;; ref: http://bnbeckwith.com/code/writegood-mode.html
+
+
 
 ;; Disable conflicting outline mode command
 ;; =============================================================================
@@ -1821,6 +1910,8 @@ When using Homebrew, install it using \"brew install trash\"."
   (call-process (executable-find "trash")
 		nil 0 nil
 		file))
+
+
 
 ;; Autocomplete in emacs ess
 ;; =============================================================================
@@ -1863,6 +1954,7 @@ When using Homebrew, install it using \"brew install trash\"."
   (setq ess-use-company t))
 
 
+
 ;; Run previous-command like elsewhere
 ;; =============================================================================
 ;; ref: https://superuser.com/a/867587
@@ -1873,6 +1965,7 @@ When using Homebrew, install it using \"brew install trash\"."
 (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 (define-key comint-mode-map (kbd "<C-up>") 'previous-line)
 (define-key comint-mode-map (kbd "<C-down>") 'next-line))
+
 
 
 ;; Run ESS on remote server : PROB: c-c c-c doesn't kill process
@@ -1920,6 +2013,7 @@ When using Homebrew, install it using \"brew install trash\"."
                               inferior-R-args))
   (ess-remote (process-name (get-buffer-process (current-buffer))) "R")
   (setq comint-process-echoes t))
+
 
 
 ;; Set R as major mode
@@ -2016,6 +2110,7 @@ t))
         ;;  (reusable-frames . nil))))
 
 
+
 ;; Activating polymode
 ;; =============================================================================
 ;; ref: https://polymode.github.io/installation/
@@ -2077,8 +2172,11 @@ t))
 (global-set-key (kbd "s-l") 'copy-line)
 
 
+
 ;; Key binding so command-left goes to beginning of line, but after the R prompt!
+;; =============================================================================
 (define-key inferior-ess-mode-map (kbd "s-<left>") 'comint-bol)
+
 
 
 ;; Kill all buffers
