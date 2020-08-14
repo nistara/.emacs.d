@@ -34,6 +34,7 @@
 	org-cycle
 	org-mouse-down-mouse
 	polymode-export
+	simpleclip-copy
 	simpleclip-cut
 	suspend-frame
 	))
