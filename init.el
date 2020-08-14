@@ -1,19 +1,22 @@
-;; 
+;; Benchmark init
+;; =============================================================================
 ;; ref: https://github.com/dholm/benchmark-init-el
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-;; ref: https://github.com/dholm/benchmark-init-el
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (package-initialize)
 
+
 ;; For org-mode
+;; =============================================================================
 (add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/lisp") 
 (add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/contrib/lisp" t)
 
+
+;; Custom variables/faces
+;; =============================================================================
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -99,6 +102,9 @@
  '(writegood-passive-voice-face ((t (:underline "DodgerBlue1"))))
  '(writegood-weasels-face ((t (:underline "SlateGray4")))))
 
+
+;; ESS
+;; =============================================================================
 (add-to-list 'load-path "/Users/nistara/Documents/ESS/lisp") ;;for R
 (require 'ess-site)
 ;; (load "ess-site")
@@ -2080,5 +2086,4 @@ t))
 (defun close-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
-
 
