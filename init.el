@@ -6,10 +6,12 @@
 (package-initialize)
 
 
+
 ;; For org-mode
 ;; =============================================================================
 (add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/lisp") 
 (add-to-list 'load-path "~/Documents/emacs-downloads/org-9.1.9/contrib/lisp" t)
+
 
 
 ;; Custom variables/faces
@@ -108,6 +110,7 @@
 ;; ref for updated ess: https://stackoverflow.com/a/52315071/5443003
 
 
+
 ;; Benchmark init
 ;; =============================================================================
 ;; ref: https://github.com/dholm/benchmark-init-el
@@ -116,9 +119,12 @@
 (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 
+
 ;; use package and elpy
 ;; =============================================================================
 ;; Note: If I edit bits of this section I can't load org-ref for some reason
+;; Possibly some dependency/loading issue:
+;; Error: load-with-code-conversion: Symbol’s value as variable is void: <!DOCTYPE
 
 ;; This is only needed once, near the top of the file
 (eval-when-compile
@@ -136,7 +142,7 @@
 
 
 
-;; So that stuff similar to terminal is used
+;; Get terminal's customizations
 ;; =============================================================================
 (when (memq window-system '(mac ns));;
   (exec-path-from-shell-initialize))
