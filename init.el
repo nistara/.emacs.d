@@ -1,6 +1,3 @@
-;; Benchmark init
-;; =============================================================================
-;; ref: https://github.com/dholm/benchmark-init-el
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
@@ -110,21 +107,19 @@
 ;; (load "ess-site")
 ;; ref for updated ess: https://stackoverflow.com/a/52315071/5443003
 
+
+;; Benchmark init
+;; =============================================================================
 ;; ref: https://github.com/dholm/benchmark-init-el
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-(package-initialize)
-
-
 (require 'benchmark-init)
 ;; To disable collection of benchmark data after init is done.
 (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 
-;; use package
+;; use package and elpy
+;; =============================================================================
+;; Note: If I edit bits of this section I can't load org-ref for some reason
+
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
