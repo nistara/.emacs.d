@@ -2072,3 +2072,13 @@ t))
 
 ;; Key binding so command-left goes to beginning of line, but after the R prompt!
 (define-key inferior-ess-mode-map (kbd "s-<left>") 'comint-bol)
+
+
+;; Kill all buffers
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/3417472
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
