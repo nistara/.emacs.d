@@ -9,3 +9,7 @@ tramp
 url/
 var/
 *.elc
+abbrev_defs
+nis-test-theme.el
+org-ref.org
+NR_emacs_theme-theme.el
