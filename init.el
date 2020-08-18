@@ -638,8 +638,8 @@
 ;; Shortcut to open and eval .emacs buffer. And Other shorcuts:
 ;; =============================================================================
 ;; http://stackoverflow.com/a/12558095
-(global-set-key (kbd "s-0") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
-(global-set-key (kbd "s-9") 'eval-buffer)
+(global-set-key (kbd "s-9") (lambda() (interactive)(find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "s-0") 'eval-buffer)
 
 ;; Shortcut to open journal, todo, agenda 
 (global-set-key (kbd "s-1") 'journal)
