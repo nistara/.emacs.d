@@ -2117,7 +2117,7 @@ t))
 (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
 
 
-;; Piping operator for ess
+;; Piping operator for ess R
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/questions/8041/how-to-implement-the-piping-operator-in-ess-mode
 
@@ -2125,11 +2125,20 @@ t))
   "R - %>% operator or 'then' pipe operator"
   (interactive)
   (just-one-space 1)
-  (insert "%>%"))
-  ;; (reindent-then-newline-and-indent))
+  (insert "%>%")
+  (reindent-then-newline-and-indent))
 (define-key ess-mode-map (kbd "s->") 'then_R_operator)
 (define-key inferior-ess-mode-map (kbd "s->") 'then_R_operator)
 
+
+;; %in% operator shortcut
+(defun in_R_operator ()
+  "R - %in% operator or 'in' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "%in% "))
+(define-key ess-mode-map (kbd "s-<") 'in_R_operator)
+(define-key inferior-ess-mode-map (kbd "s-<") 'in_R_operator)
 
 
 ;; ess font-lock
