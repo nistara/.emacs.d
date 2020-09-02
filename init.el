@@ -35,7 +35,7 @@
  '(initial-buffer-choice "~/projects")
  '(line-spacing 0.15)
  '(markdown-command "/usr/local/bin/pandoc")
- '(org-bullets-bullet-list (quote ("✿" "▶" "▶" "✸" "✿" "◉")))
+ '(org-bullets-bullet-list (quote ("❊" "▶" "▶" "✸" "✿" "◉")))
  '(org-format-latex-options
    (quote
     (:foreground default :background default :scale 1.5 :html-foreground "white" :html-background "Transparent" :html-scale 1.0 :matchers
@@ -47,7 +47,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (org-superstar poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -80,7 +80,11 @@
  '(org-block ((t (:background "#141414" :foreground "#8BA2B6"))))
  '(org-block-begin-line ((t (:background "#141414" :foreground "#8BA2B6" :slant italic))))
  '(org-block-end-line ((t (:background "#141414" :foreground "#8BA2B6" :slant italic))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-title ((t (:foreground "#FFFFFF" :weight normal :height 1))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
  '(org-level-1 ((t (:inherit outline-1 :foreground "#d47500" :weight normal :height 1.1))))
  '(org-level-2 ((t (:inherit outline-2 :foreground "#009652" :weight normal :height 1.1))))
  '(org-level-3 ((t (:inherit outline-3 :foreground "#0077BD" :weight normal :height 1.1))))
@@ -89,6 +93,13 @@
  '(org-level-6 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(org-level-7 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
  '(org-level-8 ((t (:inherit default :weight bold :foreground "dark gray" :font "Lucida Grande"))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
  '(outline-3 ((t (:inherit font-lock-keyword-face :foreground "DodgerBlue3"))))
  '(outshine-level-1 ((t (:foreground "#4DB6CF" :weight extra-bold :height 1.2))))
  '(outshine-level-2 ((t (:foreground "goldenrod2" :weight normal :height 1.2))))
@@ -1839,21 +1850,43 @@ same directory as the org-buffer and insert a link to this file."
 
 (defun writelight ()
   (interactive)
-  (outline-hide-sublevels 1)
+  (setq org-hide-emphasis-markers t)
+  (font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (use-package org-bullets
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (custom-theme-set-faces
+ 'user
+ ;; '(org-block ((t (:inherit fixed-pitch))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-document-title ((t(:foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+  ;; (outline-hide-sublevels 1)
   (setq mode-line-format nil)
   (setq line-spacing 0.3)
-  (set-background-color "oldlace")
-  (set-foreground-color "black")
-  ;; (set-frame-font "Avenir Next 15" nil t)
-  (set-frame-font "Fantasque Sans Mono 16" nil t)
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+  (set-background-color "ivory1")
+  (set-foreground-color "gray24")
+  (set-frame-font "Lucida Sans 15" nil t)
+  ;; (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'fringe nil
   :foreground (face-foreground 'default)
   :background (face-background 'default))
   )
 
+;; ref: https://zzamboni.org/post/beautifying-org-mode-in-emacs/
 
 ;; ref: https://xiangji.me/2015/07/13/a-few-of-my-org-mode-customizations/
 ;; 
