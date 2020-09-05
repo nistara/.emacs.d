@@ -47,7 +47,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org-superstar poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (langtool org-superstar poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -2228,3 +2228,8 @@ t))
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
+
+;; Langtool
+;; =============================================================================
+(setq langtool-language-tool-jar "~/Documents/emacs-downloads/LanguageTool-5.0/languagetool-commandline.jar")
+;; (require 'langtool)
