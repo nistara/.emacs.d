@@ -177,8 +177,6 @@
       tab-width 4          ;; i.e. tabs consts of 4 spaces
       )))
 
-(ac-config-default) ;; for autocomplete
-
 
 
 ;; Smart underscore
@@ -1196,14 +1194,15 @@ Version 2016-07-22"
 ;; Tab completion in ESS R
 ;; =============================================================================
 ;; ref: https://emacs.stackexchange.com/a/29281
-(require 'auto-complete-config)
-(ac-config-default)
-(define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
-;; Get tab completion in R script files
-;; See this page here
-;; https://stat.ethz.ch/pipermail/ess-help/2013-March/008719.html
-;; Make sure that this is after the auto-complete package initialization
-(setq  ess-tab-complete-in-script t)
+
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
+;; ;; Get tab completion in R script files
+;; ;; See this page here
+;; ;; https://stat.ethz.ch/pipermail/ess-help/2013-March/008719.html
+;; ;; Make sure that this is after the auto-complete package initialization
+;; (setq  ess-tab-complete-in-script t)
 
 
 ;; Backward kill words
@@ -1946,45 +1945,71 @@ When using Homebrew, install it using \"brew install trash\"."
 
 
 
-;; Autocomplete in emacs ess
-;; =============================================================================
-;; ref: https://stackoverflow.com/questions/49232454/emacs-ess-how-to-auto-complete-library-function
-
-(setq ess-use-company t)
-;; (add-hook 'after-init-hook 'global-company-mode) ;ref: https://company-mode.github.io/
-
-
-
-;; (setq-default package-archives 
-;;               '(("melpa"        . "http://melpa.milkbox.net/packages/")
-;;                 ("gnu"          . "http://elpa.gnu.org/packages/")))
-;; (setq package-enable-at-startup nil)
-;; (package-initialize)
+;; ;; Autocomplete in emacs ess
+;; ;; =============================================================================
+;; ;; ref: https://stackoverflow.com/questions/49232454/emacs-ess-how-to-auto-complete-library-function
 ;; 
-;; ;;; company
-;; (require 'company)
-(setq tab-always-indent 'complete)
+;; (setq ess-use-company t)
+;; ;; (add-hook 'after-init-hook 'global-company-mode) ;ref: https://company-mode.github.io/
 ;; 
-;; (setq company-idle-delay 0.5
-;;       company-show-numbers t
-;;       company-minimum-prefix-length 2
-;;       company-tooltip-flip-when-above t)
 ;; 
-;; (global-set-key (kbd "C-M-/") #'company-complete)
-(global-company-mode)
 ;; 
-;; ;;; ESS
-(defun my-ess-hook ()
-  ;; ensure company-R-library is in ESS backends
-  (make-local-variable 'company-backends)
-  (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
-  (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
-        company-backends))
-
-(add-hook 'ess-mode-hook 'my-ess-hook)
-
-(with-eval-after-load 'ess
-  (setq ess-use-company t))
+;; ;; (setq-default package-archives 
+;; ;;               '(("melpa"        . "http://melpa.milkbox.net/packages/")
+;; ;;                 ("gnu"          . "http://elpa.gnu.org/packages/")))
+;; ;; (setq package-enable-at-startup nil)
+;; ;; (package-initialize)
+;; ;; 
+;; ;; ;;; company
+;; ;; (require 'company)
+;; (setq tab-always-indent 'complete)
+;; ;; 
+;; ;; (setq company-idle-delay 0.5
+;; ;;       company-show-numbers t
+;; ;;       company-minimum-prefix-length 2
+;; ;;       company-tooltip-flip-when-above t)
+;; ;; 
+;; ;; (global-set-key (kbd "C-M-/") #'company-complete)
+;; (global-company-mode)
+;; ;; 
+;; ;; ;;; ESS
+;; (defun my-ess-hook ()
+;;   ;; ensure company-R-library is in ESS backends
+;;   (make-local-variable 'company-backends)
+;;   (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
+;;   (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
+;;         company-backends))
+;; 
+;; (add-hook 'ess-mode-hook 'my-ess-hook)
+;; 
+;; (with-eval-after-load 'ess
+;;   (setq ess-use-company t))
+;; 
+;; 
+;; ;; ;; https://www.emacswiki.org/emacs/ESS-company
+;; ;; ;; https://github.com/emacs-ess/ESS/issues/565
+;; ;; 
+;; ;; (setq ess-use-company t)
+;; ;; 
+;; ;; ;; (setq ess-use-company 'script-only)
+;; ;; (define-key company-active-map (kbd "M-h") 'company-show-doc-buffer)
+;; ;; 
+;; ;; (define-key company-active-map [return] nil)
+;; ;; (define-key company-active-map [tab] 'company-complete-common)
+;; ;; (define-key company-active-map (kbd "TAB") 'company-complete-common)
+;; ;; (define-key company-active-map (kbd "M-TAB") 'company-complete-selection)
+;; ;; 
+;; ;; (setq company-selection-wrap-around t
+;; ;;       company-tooltip-align-annotations t
+;; ;;       company-idle-delay 0.36
+;; ;;       ;; company-minimum-prefix-length 2
+;; ;;       company-tooltip-limit 10)
+;; ;; 
+;; ;; (defun my-ess-config ()
+;; ;;   (make-variable-buffer-local 'company-backends)
+;; ;;   (add-to-list 'company-backends
+;; ;;                '(company-R-args company-R-objects company-dabbrev-code :separate)))
+;; ;; (add-hook 'ess-mode-hook #'my-ess-config)
 
 
 
@@ -2233,3 +2258,35 @@ t))
 ;; =============================================================================
 (setq langtool-language-tool-jar "~/Documents/emacs-downloads/LanguageTool-5.0/languagetool-commandline.jar")
 ;; (require 'langtool)
+
+
+
+;; Company mode
+;; =============================================================================
+;; ref:
+;; https://stackoverflow.com/a/49597329
+
+;;; company
+(require 'company)
+(setq tab-always-indent 'complete)
+
+(setq company-idle-delay 0.5
+      ;; company-show-numbers t
+      company-minimum-prefix-length 2
+      company-tooltip-flip-when-above t)
+
+(global-set-key (kbd "M-TAB") #'company-complete)
+(global-company-mode)
+
+;;; ESS
+(defun my-ess-hook ()
+  ;; ensure company-R-library is in ESS backends
+  (make-local-variable 'company-backends)
+  (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
+  (push (list 'company-R-args 'company-R-objects 'company-R-library :separate)
+        company-backends))
+
+(add-hook 'ess-mode-hook 'my-ess-hook)
+
+(with-eval-after-load 'ess
+  (setq ess-use-company t))
