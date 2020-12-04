@@ -2270,10 +2270,10 @@ t))
 (require 'company)
 (setq tab-always-indent 'complete)
 
-(setq company-idle-delay 0.5
-      ;; company-show-numbers t
-      company-minimum-prefix-length 2
-      company-tooltip-flip-when-above t)
+;; (setq company-idle-delay 0.5
+;;       ;; company-show-numbers t
+;;       company-minimum-prefix-length 2
+;;       company-tooltip-flip-when-above t)
 
 (global-set-key (kbd "M-TAB") #'company-complete)
 (global-company-mode)
@@ -2287,6 +2287,49 @@ t))
         company-backends))
 
 (add-hook 'ess-mode-hook 'my-ess-hook)
-
 (with-eval-after-load 'ess
   (setq ess-use-company t))
+
+# to enable completion-at-point in R scripts
+
+(define-key ess-mode-map (kbd "TAB") 'smart-tab)
+
+    (defun smart-tab ()
+      "This smart tab is minibuffer compliant: it acts as usual in
+    the minibuffer. Else, if mark is active, indents region. Else if
+    point is at the end of a symbol, expands it. Else indents the
+    current line."
+      (interactive)
+      (if (minibufferp)
+          (unless (minibuffer-complete)
+            (dabbrev-expand nil))
+        (if mark-active
+            (indent-region (region-beginning)
+                           (region-end))
+          (if (looking-at "\\_>")
+              (dabbrev-expand nil)
+            (indent-for-tab-command)))))
+
+;; Org-mode code block colors
+;; =============================================================================
+;; (custom-set-faces
+;;  '(org-block-begin-line
+;;    ((t (:underline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF"))))
+;;  '(org-block
+;;    ((t (:background "#EFF0F1"))))
+;;  '(org-block-end-line
+;;    ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "#EAEAFF"))))
+;;  )
+
+(require 'color)
+(set-face-attribute 'org-block nil :background
+                    (color-darken-name
+                     (face-attribute 'default :background) 2))
+
+(set-face-attribute 'org-block-begin-line nil :background
+                    (color-darken-name
+                     (face-attribute 'default :background) 2))
+
+(set-face-attribute 'org-block-end-line nil :background
+                    (color-darken-name
+                     (face-attribute 'default :background) 3))
