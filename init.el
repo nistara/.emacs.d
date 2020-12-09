@@ -2337,6 +2337,7 @@ t))
 
 ;; Interrupt R process
 ;; =============================================================================
+;; https://stackoverflow.com/a/41466688
 (defun ess-interrupt ()
   (interactive)
   (interrupt-process (ess-get-process)))
