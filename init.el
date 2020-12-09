@@ -2290,25 +2290,25 @@ t))
 (with-eval-after-load 'ess
   (setq ess-use-company t))
 
-# to enable completion-at-point in R scripts
+;; to enable completion-at-point in R scripts
 
 (define-key ess-mode-map (kbd "TAB") 'smart-tab)
 
-    (defun smart-tab ()
-      "This smart tab is minibuffer compliant: it acts as usual in
+(defun smart-tab ()
+  "This smart tab is minibuffer compliant: it acts as usual in
     the minibuffer. Else, if mark is active, indents region. Else if
     point is at the end of a symbol, expands it. Else indents the
     current line."
-      (interactive)
-      (if (minibufferp)
-          (unless (minibuffer-complete)
-            (dabbrev-expand nil))
-        (if mark-active
-            (indent-region (region-beginning)
-                           (region-end))
-          (if (looking-at "\\_>")
-              (dabbrev-expand nil)
-            (indent-for-tab-command)))))
+  (interactive)
+  (if (minibufferp)
+      (unless (minibuffer-complete)
+	(dabbrev-expand nil))
+    (if mark-active
+	(indent-region (region-beginning)
+		       (region-end))
+      (if (looking-at "\\_>")
+	  (dabbrev-expand nil)
+	(indent-for-tab-command)))))
 
 ;; Org-mode code block colors
 ;; =============================================================================
@@ -2333,3 +2333,12 @@ t))
 (set-face-attribute 'org-block-end-line nil :background
                     (color-darken-name
                      (face-attribute 'default :background) 3))
+
+
+;; Interrupt R process
+;; =============================================================================
+(defun ess-interrupt ()
+  (interactive)
+  (interrupt-process (ess-get-process)))
+(define-key ess-mode-map (kbd "M-s-<return>") 'ess-interrupt)
+(define-key inferior-ess-mode-map (kbd "M-s-<return>") 'ess-interrupt)
