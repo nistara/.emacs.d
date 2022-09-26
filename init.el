@@ -2356,3 +2356,16 @@ t))
 (define-key ess-mode-map (kbd "M-s-<return>") 'ess-interrupt)
 (define-key inferior-ess-mode-map (kbd "M-s-<return>") 'ess-interrupt)
 (put 'upcase-region 'disabled nil)
+					;
+
+;; Quarto mode
+;; =============================================================================
+;; ref: https://github.com/quarto-dev/quarto-emacs
+
+;; load the library
+(require 'quarto-mode)
+
+;; Note that the following is not necessary to run quarto-mode in .qmd files! It's merely illustrating
+;; how to associate different extensions to the mode.
+(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-quarto-mode))
+;; (add-to-list 'auto-mode-alist '("\\.qmd" . poly-markdown-mode))

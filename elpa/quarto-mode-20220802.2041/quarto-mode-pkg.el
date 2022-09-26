@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "quarto-mode" "20220802.2041" "A (poly)mode for https://quarto.org" '((emacs "25.1") (polymode "0.2.2") (poly-markdown "0.2.2") (markdown-mode "2.3") (request "0.3.2")) :commit "769a4ec178f8ad3e0c87b1ee23e64616ee161b02" :authors '(("Carlos Scheidegger")) :maintainer '("Carlos Scheidegger") :keywords '("languages" "multi-modes") :url "https://github.com/quarto-dev/quarto-emacs")
