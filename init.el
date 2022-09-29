@@ -43,6 +43,8 @@
     ("82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "4aa183d57d30044180d5be743c9bd5bf1dde686859b1ba607b2eea26fe63f491" "039399f7bf49e440fee74e17e77c6ad982a6336831769e51958b02db6ed77952" "7673563371dcabdad088479a99950c9e96b59f12fd8018b90726c545fdcc4843" "addb8dddf1706c88f77205c339db3189968216b8b0f04ab5f3a3cb47a41b2c9c" "21fb497b14820147b2b214e640b3c5ee19fcadc15bc288e3c16c9c9575d95d66" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "40da996f3246a3e99a2dff2c6b78e65307382f23db161b8316a5440b037eb72c" default)))
  '(doc-view-continuous t)
  '(fci-rule-color "gray50")
+ '(highlight-indent-guides-auto-character-face-perc 20)
+ '(highlight-indent-guides-method (quote character))
  '(initial-buffer-choice "~/projects")
  '(line-spacing 0.15)
  '(markdown-command "/usr/local/bin/pandoc")
@@ -58,7 +60,7 @@
  '(outshine-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (bicycle quarto-mode color-theme-sanityinc-tomorrow zenburn-theme langtool org-superstar poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
+    (highlight-indent-guides bicycle quarto-mode color-theme-sanityinc-tomorrow zenburn-theme langtool org-superstar poly-R poly-markdown polymode adaptive-wrap ess fold-this night-owl-theme multi-term ess-R-data-view writegood-mode outshine undo-tree eink-theme tramp-theme emamux org-download fold-dwim ov ox-pandoc org company-shell company flycheck org-babel-eval-in-repl use-package benchmark-init osx-dictionary evil-search-highlight-persist synosaurus rainbow-delimiters nord-theme pdf-tools auctex htmlize highlight-parentheses git-gutter-fringe fringe-helper git-gutter visual-fill-column zotxt swiper pandoc-mode multiple-cursors markdown-mode magit json-mode exec-path-from-shell elpy csv-mode cl-lib-highlight auto-complete))))
 
 
 (custom-set-faces
@@ -2292,6 +2294,9 @@ t))
 
 ;;; ESS
 (defun my-ess-hook ()
+  ;; add Rstudio style
+  ;;   https://github.com/emacs-ess/ESS/issues/661#issuecomment-418720156
+  (ess-set-style 'RStudio- 'quiet)
   ;; ensure company-R-library is in ESS backends
   (make-local-variable 'company-backends)
   (cl-delete-if (lambda (x) (and (eq (car-safe x) 'company-R-args))) company-backends)
@@ -2369,3 +2374,10 @@ t))
 ;; how to associate different extensions to the mode.
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-quarto-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.qmd" . poly-markdown-mode))
+
+
+;; Highlight indentations in code
+;; =============================================================================
+;; ref: https://github.com/DarthFennec/highlight-indent-guides
+
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
