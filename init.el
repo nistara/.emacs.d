@@ -1449,6 +1449,32 @@ same directory as the org-buffer and insert a link to this file."
 (global-set-key (kbd "H-d") 'org-toggle-inline-images)
 
 
+;; Screenshot in markdown or quarto
+;; =============================================================================
+;; ref: https://stackoverflow.com/a/31868530/5443003
+;; ref: https://www.gnu.org/software/emacs/manual/html_node/elisp/Time-Parsing.html
+(defun md-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the
+same directory as the working and insert a link to this file."
+  (interactive)
+  (org-display-inline-images)
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat (file-name-nondirectory (buffer-file-name))
+                  "_screenshots/"
+                  (format-time-string "%Y-%m-%d_%a_%k%M%p_")) ) ".png"))
+  (unless (file-exists-p (file-name-directory filename))
+    (make-directory (file-name-directory filename)))
+  ; take screenshot
+  (if (eq system-type 'darwin)
+      (call-process "screencapture" nil nil nil "-i" filename))
+  (if (eq system-type 'gnu/linux)
+      (call-process "import" nil nil nil filename))
+  ; insert into file if correctly taken
+  (if (file-exists-p filename)
+    (insert (concat "![](file:" filename ")"))))
+
 
 ;; Commecting to mac dictionary
 ;; =============================================================================
